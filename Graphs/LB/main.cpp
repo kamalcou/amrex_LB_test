@@ -3,12 +3,13 @@
 #include <AMReX_MultiFab.H>
 #include <AMReX_ParmParse.H>
 #include <AMReX_ParallelDescriptor.H>
-#include <AMReX_Graph.H>
+#include <random>
+//#include <AMReX_Graph.H>
 
 #include <Util.H>
 #include <Knapsack.H>
 #include <SFC.H>
-#include <CommObjs.H>
+//#include <CommObjs.H>
 
 #if defined(AMREX_USE_MPI) || defined(AMREX_USE_GPU)
 #error This is a serial test only. 
@@ -33,23 +34,26 @@ void main_main ()
 {
 
     BL_PROFILE("main");
-/*
+
     int ncomp;
     double scaling = 0.0;
     std::string name = "fb";
+    int nbins;
     IntVect d_size, mgs, nghost, piv;
     {
         ParmParse pp;
         pp.get("domain", d_size);
         pp.get("max_grid_size", mgs);
+        
         pp.get("ncomp", ncomp);
         pp.get("nghost", nghost);
         pp.get("periodicity", piv);
+        pp.get("nbins",nbins);
 
         pp.query("name", name);
         pp.query("scaling", scaling);
     }
-*/
+
 
 //    amrex::ResetRandomSeed(27182182459045);
 
@@ -78,16 +82,21 @@ void main_main ()
 /* BUILD A BOXARRAY AND WEIGHTS TO LOAD BALANCE */
 
     // TEST INFO (PARMPARSE)
-    int nbins = 2;
+    //int nbins = 2;
     int nmax = std::numeric_limits<int>::max();
     Real k_eff = 0.0;
     Real s_eff = 0.0;
     Real target_eff = 0.9;
 
+   
     // BUILD BOXARRAY FOR SFC & COMM PATTERNS
-    IntVect d_size(256, 256, 256);
-    IntVect mgs(128,128,128);
+    //IntVect d_size(256, 256, 256);  // we need to have this as a variable 
+                                    // or read from a file
+    //IntVect mgs(128,128,128);
+    //IntVect mgs(64,64,64);
+    //IntVect mgs(32,32,32);
 
+ //amrex::Print() << "max_grid_size " << mgs << std::endl;
     Box domain(IntVect{0}, (d_size-=1));
     BoxArray ba(domain);
     ba.maxSize(mgs);
@@ -97,22 +106,38 @@ void main_main ()
     // BUILD WEIGHT DISTRIBUTION AND SORTING BYTES VECTOR
     std::vector<amrex::Real> wgts(nitems);
     std::vector<Long> bytes;
+    std::vector<Long> guess(nitems);
 
-    Real mean = 100000;
+    Real mean = 100000;  /// We need to have read from file
     Real stdev = 4523;
     for (int i=0; i<nitems; ++i) {
         wgts[i] = amrex::RandomNormal(mean, stdev);
     }
-
+    
     // Scale weights and convert to Long for algorithms.
     std::vector<Long> scaled_wgts = scale_wgts(wgts);
 
+    //generate array of guesses with normal distribution
+    std::default_random_engine generator;
+    std::normal_distribution<double> distribution(mean,stdev);
+    amrex::Print()<<"Guess values: ";
+    for (int i=0;i<nitems;i++){
+        guess[i]=distribution(generator);  //guess value based on the normal distribution
+	if (guess[i]<0){
+	    amrex::Print()<<"negative guess, make mean higher or standard devation smaller"<<std::endl;
+            exit(0);
+	} 
+    amrex::Print()<<guess[i]<<" ";
+    }
+    amrex::Print()<<std::endl;
     // SFC parameter -- default = 0
     int node_size = 0;
 
     std::vector<int> k_dmap = KnapSackDoIt(scaled_wgts, nbins, k_eff, true, nmax, true, false, bytes);
     std::vector<int> s_dmap = SFCProcessorMapDoIt(ba, scaled_wgts, nbins, &s_eff, node_size, true, false, bytes);
-
+    std::vector<int> bruteForce_dmap = BruteForceDoIt(guess, nbins, k_eff, true, nmax, true, false, bytes);
+    
+#if 0
 // ***************************************************************
 /* PC comm pattern from CPCs */
 
@@ -216,7 +241,7 @@ void main_main ()
         }
     }
     graph.print_table("FBTest");
-
+#endif
 // ***************************************************************
 
 #if 0
