@@ -36,6 +36,7 @@ class WeightedBox
 public:
     WeightedBox (int b, int w) : m_boxid(b), m_weight(w) {}
     amrex::Long weight () const { return m_weight; }
+    amrex::Long weight (int b) const { return m_weight; }
     int  boxid ()  const { return m_boxid;  }
     // Sort the boxes in descending order by weight
     bool operator< (const WeightedBox& rhs) const
@@ -143,11 +144,11 @@ knapsack (const std::vector<amrex::Long>&  wgts,
     }
 
     amrex::Real max_weight = 0;
-    amrex::Real sum_weight = 0;
+    amrex::Real bucket_weight = 0;
     for (auto const& wbl : wblv)
     {
         amrex::Real wgt = wbl.weight();
-        sum_weight += wgt;
+        bucket_weight += wgt;
         max_weight = std::max(wgt, max_weight);
     }
 
@@ -157,13 +158,13 @@ knapsack (const std::vector<amrex::Long>&  wgts,
         wblq.pop();
         if (wbl.size() > 0) {
             amrex::Real wgt = wbl.weight();
-            sum_weight += wgt;
+            bucket_weight += wgt;
             max_weight = std::max(wgt, max_weight);
             wblv.push_back(wbl);
         }
     }
 
-    efficiency = sum_weight/(nprocs*max_weight);
+    efficiency = bucket_weight/(nprocs*max_weight);
 
     std::sort(wblv.begin(), wblv.end());
 
@@ -211,7 +212,7 @@ top: ;
                         }
 
                         max_weight = bl_top->weight();
-                        efficiency = sum_weight / (nprocs*max_weight);
+                        efficiency = bucket_weight / (nprocs*max_weight);
                         goto top;
                     }
                 }
@@ -252,7 +253,8 @@ bruteForce (const std::vector<amrex::Long>&  wgts,
     amrex::Vector<WeightedBox> lb;
     lb.reserve(wgts.size());
     for (unsigned int i = 0, N = wgts.size(); i < N; ++i)
-    {
+    {    
+        //  amrex::Print()<<wgts[i]<<std::endl;
         lb.push_back(WeightedBox(i, wgts[i]));
     }
    //std::sort(lb.begin(), lb.end());  //remove sort since it is brute force solution
@@ -284,19 +286,44 @@ bruteForce (const std::vector<amrex::Long>&  wgts,
         //     }
         // } else {
             int ip = static_cast<int>(i) % nprocs;
-           // wblv[ip].push_back(lb[i]);
+          //  wblv[ip].push_back(lb[i].weight());
             result[ip].push_back(lb[i].boxid());
+            //result_weight[ip].push_back(ib[i].weight());
       //  }
     }
+    //  amrex::Real max_weight = 0;
+    //  amrex::Real bucket_weight = 0,sum_weights=0;
+    //  amrex::Print()<<"result.size(): "<<wblv.size()<<"result[0].size()"<<wblv[0].size()<<std::endl;
 
-//     amrex::Real max_weight = 0;
-//     amrex::Real sum_weight = 0;
-//     for (auto const& wbl : wblv)
-//     {
-//         amrex::Real wgt = wbl.weight();
-//         sum_weight += wgt;
-//         max_weight = std::max(wgt, max_weight);
-//     }
+
+    //  for (int i = 0, ni = wblv.size(); i < ni; ++i) {
+    //        bucket_weight=0;
+    //        // amrex::Print() << "  Bucket " << i << " contains boxes:" << std::endl << "    ";
+    //         for (int j = 0, nj = wblv[i].size(); j < nj; ++j) {
+    //             amrex::Print() << wblv[i][j] << " ";
+    //             amrex::Real wgt = wblv[i][j];
+    //             bucket_weight+=wgt;
+    //         }
+    //         sum_weights+=bucket_weight;
+    //         max_weight = std::max(bucket_weight, max_weight);
+    //         amrex::Print() << std::endl;
+            
+    //     }
+    // for (auto const& wbl : wblv)
+    // {
+    //     amrex::Real wgt = wbl.weight();
+    //     bucket_weight += wgt;
+    //     max_weight = std::max(wgt, max_weight);
+    // }
+
+    // amrex::Real max_weight = 0;
+    // amrex::Real bucket_weight = 0;
+    // for (auto const& wbl : wblv)
+    // {
+    //     amrex::Real wgt = wbl.weight();
+    //     bucket_weight += wgt;
+    //     max_weight = std::max(wgt, max_weight);
+    // }
 
 //     while (!wblq.empty())
 //     {
@@ -304,13 +331,42 @@ bruteForce (const std::vector<amrex::Long>&  wgts,
 //         wblq.pop();
 //         if (wbl.size() > 0) {
 //             amrex::Real wgt = wbl.weight();
-//             sum_weight += wgt;
+//             bucket_weight += wgt;
 //             max_weight = std::max(wgt, max_weight);
 //             wblv.push_back(wbl);
 //         }
 //     }
+ 
+    //    efficiency = bucket_weight/(nprocs*max_weight);
+    //   amrex::Print()<<"bucket_weight: "<<bucket_weight<<" max_weight: "<<max_weight<<std::endl;
 
-//     efficiency = sum_weight/(nprocs*max_weight);
+      std::vector<LIpair> LIpairV;
+
+    LIpairV.reserve(nprocs);
+
+    for (int i = 0; i < nprocs; ++i)
+    {
+        amrex::Long wgt = 0;
+        for (std::vector<int>::const_iterator lit = result[i].begin(), End = result[i].end();
+             lit != End; ++lit)
+        {
+            wgt += wgts[*lit];
+        }
+
+        LIpairV.push_back(LIpair(wgt,i));
+    }
+    
+    amrex::Real max_weight = 0;
+    amrex::Real total_weight = 0;
+    for (auto const& LIpair : LIpairV)
+    {   amrex::Real wgt=LIpair.first;
+        max_weight=amrex::max(wgt,max_weight);
+        total_weight+=wgt;
+        //amrex::Print()<<LIpair.first<<std::endl;
+    }
+    efficiency = total_weight/(nprocs*max_weight);
+    amrex::Print()<<"total_weight: "<<total_weight<<" max_weight: "<<max_weight<<std::endl;
+
 
 //     std::sort(wblv.begin(), wblv.end());
 
@@ -358,7 +414,7 @@ bruteForce (const std::vector<amrex::Long>&  wgts,
 //                         }
 
 //                         max_weight = bl_top->weight();
-//                         efficiency = sum_weight / (nprocs*max_weight);
+//                         efficiency = bucket_weight / (nprocs*max_weight);
 //                         goto top;
 //                     }
 //                 }
@@ -396,7 +452,7 @@ KnapSackDoIt (const std::vector<amrex::Long>& wgts,// length of vector is the nu
         amrex::Print() << "DM: KnapSackDoIt called..." << std::endl;
     }
 
-    BL_PROFILE("DistributionMapping::KnapSackDoIt()");
+    BL_PROFILE("KnapSackDoIt()");
 
     //nprocs = amrex::ParallelContext::NProcsSub();
 
@@ -534,7 +590,7 @@ BruteForceDoIt (const std::vector<amrex::Long>& wgts,// length of vector is the 
         amrex::Print() << "DM: BruteForceDoIt called..." << std::endl;
     }
 
-    BL_PROFILE("DistributionMapping::BruteForceDoIt()");
+    BL_PROFILE("BruteForceDoIt() ");
 
     //nprocs = amrex::ParallelContext::NProcsSub();
 

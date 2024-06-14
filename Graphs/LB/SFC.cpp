@@ -106,7 +106,7 @@ Distribute (const std::vector<SFCToken>&     tokens,
             bool                             flag_verbose_mapper)
 
 {
-    BL_PROFILE("DistributionMapping::Distribute()");
+    BL_PROFILE("Distribute()");
 
     if (flag_verbose_mapper) {
         amrex::Print() << "Distribute:" << std::endl;
@@ -196,7 +196,7 @@ SFCProcessorMapDoIt (const amrex::BoxArray&          boxes,
         amrex::Print() << "DM: SFCProcessorMapDoIt called..." << std::endl;
     }
 
-    BL_PROFILE("DistributionMapping::SFCProcessorMapDoIt()");
+    BL_PROFILE("SFCProcessorMapDoIt()");
 
     int nteams = nprocs;
     int nworkers = 1;

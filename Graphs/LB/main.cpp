@@ -102,6 +102,8 @@ void main_main ()
     ba.maxSize(mgs);
 
     int nitems = ba.size();
+    amrex::Print()<<"Number of boxes: "<<nitems<<std::endl;
+    amrex::Print()<<"Number of buckets: "<<nbins<<std::endl;
 
     // BUILD WEIGHT DISTRIBUTION AND SORTING BYTES VECTOR
     std::vector<amrex::Real> wgts(nitems);
