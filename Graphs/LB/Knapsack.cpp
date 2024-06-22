@@ -254,7 +254,7 @@ bruteForce (const std::vector<amrex::Long>&  wgts,
     lb.reserve(wgts.size());
     for (unsigned int i = 0, N = wgts.size(); i < N; ++i)
     {    
-        //  amrex::Print()<<wgts[i]<<std::endl;
+        // amrex::Print()<<wgts[i]<<std::endl;
         lb.push_back(WeightedBox(i, wgts[i]));
     }
    //std::sort(lb.begin(), lb.end());  //remove sort since it is brute force solution
@@ -477,7 +477,7 @@ KnapSackDoIt (const std::vector<amrex::Long>& wgts,// length of vector is the nu
         for (int i = 0, ni = vec.size(); i < ni; ++i) {
             amrex::Print() << "  Bucket " << i << " contains boxes:" << std::endl << "    ";
             for (int j = 0, nj = vec[i].size(); j < nj; ++j) {
-                amrex::Print() << vec[i][j] << " ";
+                // amrex::Print() << vec[i][j] << " ";
             }
             amrex::Print() << std::endl;
         }
@@ -615,7 +615,7 @@ BruteForceDoIt (const std::vector<amrex::Long>& wgts,// length of vector is the 
         for (int i = 0, ni = vec.size(); i < ni; ++i) {
             amrex::Print() << "  Bucket " << i << " contains boxes:" << std::endl << "    ";
             for (int j = 0, nj = vec[i].size(); j < nj; ++j) {
-                amrex::Print() << vec[i][j] << " ";
+                // amrex::Print() << vec[i][j] << " ";
             }
             amrex::Print() << std::endl;
         }

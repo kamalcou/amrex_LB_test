@@ -102,8 +102,9 @@ void main_main ()
     ba.maxSize(mgs);
 
     int nitems = ba.size();
-    amrex::Print()<<"Number of boxes: "<<nitems<<std::endl;
     amrex::Print()<<"Number of buckets: "<<nbins<<std::endl;
+    amrex::Print()<<"Number of boxes: "<<nitems<<std::endl;
+    
 
     // BUILD WEIGHT DISTRIBUTION AND SORTING BYTES VECTOR
     std::vector<amrex::Real> wgts(nitems);
@@ -122,14 +123,14 @@ void main_main ()
     //generate array of guesses with normal distribution
     std::default_random_engine generator;
     std::normal_distribution<double> distribution(mean,stdev);
-    amrex::Print()<<"Guess values: ";
+   // amrex::Print()<<"Guess values: ";
     for (int i=0;i<nitems;i++){
         guess[i]=distribution(generator);  //guess value based on the normal distribution
 	if (guess[i]<0){
 	    amrex::Print()<<"negative guess, make mean higher or standard devation smaller"<<std::endl;
             exit(0);
 	} 
-    amrex::Print()<<guess[i]<<" ";
+    //amrex::Print()<<guess[i]<<" ";
     }
     amrex::Print()<<std::endl;
     // SFC parameter -- default = 0
