@@ -77,7 +77,7 @@ def search_values_in_files(directory, search_phrase, output_csv):
                     #     results.append([filename, value1,value2])
     print(output_csv)
     # Write results to a CSV file
-    with open(output_csv, 'w', newline='') as csvfile:
+    with open(output_csv, 'w') as csvfile:
         csv_writer = csv.writer(csvfile)
         csv_writer.writerow(['Filename', 'buckets','boxes','KnapSackDoIt','BruteForceDoIt','SFCProcessorMapDoIt'])
         csv_writer.writerows(results)
