@@ -1,26 +1,35 @@
-#!/bin/bash         
+#!/bin/bash
 
 echo "Hello, GeeksforGeeks"
-for ((nbins=2;nbins<=100;nbins=nbins*2))
-do
-
-    # nbins=2
-    d_size=256
-    boxes=8
-    for ((i=128; i>=16; i=i/2))
+for ((domain_size=256;domain_size<=256;domain_size=domain_size*2))
     do
-        for ((j=i;  j>=16; j=j/2))
+    for ((nbins=2;nbins<=6000;nbins=nbins*2))
+    do
+
+        # nbins=2
+        # domain_size=256
+        max_grid_size=$((domain_size/nbins))
+        grid_size=$((max_grid_size/2))
+        
+        # boxes=8
+        for ((i=max_grid_size; i>=grid_size && grid_size > 0; i=i/2))
         do
-            for((k=j; k>=16; k=k/2))
+            for ((j=i;  j>=grid_size; j=j/2))
             do
-                echo "Number: $i,$j,$k"
-                boxes=$(($((d_size/i))*$((d_size/j))*$((d_size/k))))
-                echo "boxes=$boxes"
-                cmd='./main3d.gnu.x86-milan.TPROF.ex inputs  nbins='$nbins' max_grid_size="('$i,$j,$k')" >output/'$nbins'_'$boxes'_output.txt'
-                echo $cmd
-                eval $cmd
+                for((k=j; k>=grid_size; k=k/2))
+                do
+                    echo "i=$i,j=$j,k=$k"
+                    boxes=$(($((domain_size/i))*$((domain_size/j))*$((domain_size/k))))
+                    echo "nbins=$nbins"
+                    echo "boxes=$boxes"
+                    echo "max_grid_size=$max_grid_size"
+                    echo  "grid_size=$grid_size"
+                    cmd='./main3d.gnu.x86-milan.TPROF.ex inputs  nbins='$nbins' domain="('$domain_size,$domain_size,$domain_size')" max_grid_size="('$i,$j,$k')" >output/'$domain_size'_'$nbins'_'$boxes'_output.txt'
+                    echo $cmd
+                    eval $cmd
+                done
+                
             done
-            
         done
     done
 done

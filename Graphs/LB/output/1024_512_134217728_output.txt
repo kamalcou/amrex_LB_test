@@ -1,0 +1,6 @@
+Initializing AMReX (24.05-32-g28b010126a1b)...
+AMReX (24.05-32-g28b010126a1b) initialized
+Number of buckets: 512
+Number of boxes: 134217728
+
+DM: KnapSackDoIt called...

@@ -365,7 +365,7 @@ bruteForce (const std::vector<amrex::Long>&  wgts,
         //amrex::Print()<<LIpair.first<<std::endl;
     }
     efficiency = total_weight/(nprocs*max_weight);
-    amrex::Print()<<"total_weight: "<<total_weight<<" max_weight: "<<max_weight<<std::endl;
+    // amrex::Print()<<"total_weight: "<<total_weight<<" max_weight: "<<max_weight<<std::endl;
 
 
 //     std::sort(wblv.begin(), wblv.end());
@@ -475,7 +475,7 @@ KnapSackDoIt (const std::vector<amrex::Long>& wgts,// length of vector is the nu
 
     if (flag_verbose_mapper) {
         for (int i = 0, ni = vec.size(); i < ni; ++i) {
-            amrex::Print() << "  Bucket " << i << " contains boxes:" << std::endl << "    ";
+            // amrex::Print() << "  Bucket " << i << " contains boxes:" << std::endl << "    ";
             for (int j = 0, nj = vec[i].size(); j < nj; ++j) {
                 // amrex::Print() << vec[i][j] << " ";
             }
@@ -613,7 +613,7 @@ BruteForceDoIt (const std::vector<amrex::Long>& wgts,// length of vector is the 
 
     if (flag_verbose_mapper) {
         for (int i = 0, ni = vec.size(); i < ni; ++i) {
-            amrex::Print() << "  Bucket " << i << " contains boxes:" << std::endl << "    ";
+            // amrex::Print() << "  Bucket " << i << " contains boxes:" << std::endl << "    ";
             for (int j = 0, nj = vec[i].size(); j < nj; ++j) {
                 // amrex::Print() << vec[i][j] << " ";
             }
