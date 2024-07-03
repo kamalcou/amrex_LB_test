@@ -4,11 +4,14 @@
 #include <AMReX_ParmParse.H>
 #include <AMReX_ParallelDescriptor.H>
 #include <random>
+#include<string>
+#include <cstring>  // For std::strcpy
 //#include <AMReX_Graph.H>
 
 #include <Util.H>
 #include <Knapsack.H>
 #include <SFC.H>
+#include<BruteForce.H>
 //#include <CommObjs.H>
 
 #if defined(AMREX_USE_MPI) || defined(AMREX_USE_GPU)
@@ -108,13 +111,15 @@ void main_main ()
 
     // BUILD WEIGHT DISTRIBUTION AND SORTING BYTES VECTOR
     std::vector<amrex::Real> wgts(nitems);
+    //std::vector<amrex::double> guess(nitems);
     std::vector<Long> bytes;
-    std::vector<Long> guess(nitems);
+    //std::vector<Long> guess(nitems);
 
     Real mean = 100000;  /// We need to have read from file
     Real stdev = 4523;
     for (int i=0; i<nitems; ++i) {
         wgts[i] = amrex::RandomNormal(mean, stdev);
+       // guess[i] = amrex::RandomNormal(mean, stdev);
     }
     
     // Scale weights and convert to Long for algorithms.
@@ -124,22 +129,30 @@ void main_main ()
     std::default_random_engine generator;
     std::normal_distribution<double> distribution(mean,stdev);
    // amrex::Print()<<"Guess values: ";
-    for (int i=0;i<nitems;i++){
-        guess[i]=distribution(generator);  //guess value based on the normal distribution
-	if (guess[i]<0){
-	    amrex::Print()<<"negative guess, make mean higher or standard devation smaller"<<std::endl;
-            exit(0);
-	} 
-    //amrex::Print()<<guess[i]<<" ";
-    }
-    amrex::Print()<<std::endl;
+    // for (int i=0;i<nitems;i++){
+    //     guess[i]=distribution(generator);  //guess value based on the normal distribution
+	// if (guess[i]<0){
+	//     amrex::Print()<<"negative guess, make mean higher or standard devation smaller"<<std::endl;
+    //         exit(0);
+	// } 
+    // //amrex::Print()<<guess[i]<<" ";
+    // }
+    // amrex::Print()<<std::endl;
     // SFC parameter -- default = 0
     int node_size = 0;
 
     std::vector<int> k_dmap = KnapSackDoIt(scaled_wgts, nbins, k_eff, true, nmax, true, false, bytes);
     std::vector<int> s_dmap = SFCProcessorMapDoIt(ba, scaled_wgts, nbins, &s_eff, node_size, true, false, bytes);
-    std::vector<int> bruteForce_dmap = BruteForceDoIt(guess, nbins, k_eff, true, nmax, true, false, bytes);
+   // std::vector<int> bruteForce_dmap = BruteForceDoIt(guess, nbins, k_eff, true, nmax, true, false, bytes);
     
+    
+    BruteForceDoIt(nbins,nitems,mean,stdev);
+    
+
+   // get_all_combos(N,nr,guess,ranks,combo_fn);  // N=total number of boxes, 
+                                                  // nr= number of buckets 
+//                                                 //guess=based on normal distribution 
+//                                                 //ranks= collection of ranks number suppose 0-63 for 64 ranks
 #if 0
 // ***************************************************************
 /* PC comm pattern from CPCs */
