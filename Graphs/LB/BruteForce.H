@@ -10,13 +10,13 @@ using namespace std;
 
 char* getfn(int it, char* b, char* c, char* d);
 
-double get_maxt(int *rank, double *guess, int N,int nr);
+double get_maxt(int *rank, long int *guess, int N,int nr);
 
-void BruteForceDoIt(int nbins, int nitems, double mean, double stdev);
+void BruteForceDoIt(int nbins, int nitems, double mean, double stdev,long int *guess);
 
 int* ternary(int n, int nr,int N);
     
-void basechange_fill(int N, int nr,double *guess);
+void basechange_fill(int N, int nr,long int *guess);
 
 
-void get_all_combos(int N, int nr, double *guess, int *ranks, char *fn);
+void get_all_combos(int N, int nr, long int *guess, int *ranks);

@@ -4,7 +4,7 @@ AMREX_HOME ?= ../../../amrex
 
 #DEBUG        = TRUE
 #USE_CCACHE   = TRUE
-USE_OMP      = FALSE
+USE_OMP      = TRUE
 TINY_PROFILE = TRUE
 USE_MPI      = FALSE 
 USE_CUDA     = FALSE

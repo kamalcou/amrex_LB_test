@@ -7,6 +7,7 @@
 #include<string>
 #include <cstring>  // For std::strcpy
 //#include <AMReX_Graph.H>
+#include <omp.h>
 
 #include <Util.H>
 #include <Knapsack.H>
@@ -146,7 +147,7 @@ void main_main ()
    // std::vector<int> bruteForce_dmap = BruteForceDoIt(guess, nbins, k_eff, true, nmax, true, false, bytes);
     
     
-    BruteForceDoIt(nbins,nitems,mean,stdev);
+    BruteForceDoIt(nbins,nitems,mean,stdev,scaled_wgts.data());
     
 
    // get_all_combos(N,nr,guess,ranks,combo_fn);  // N=total number of boxes, 

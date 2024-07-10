@@ -8,7 +8,7 @@
 #SBATCH -e %x_%j.err
 
 #OpenMP settings:
-export OMP_NUM_THREADS=1
+export OMP_NUM_THREADS=256
 export OMP_PLACES=threads
 export OMP_PROC_BIND=spread
 

@@ -310,9 +310,9 @@ SFCProcessorMapDoIt (const amrex::BoxArray&          boxes,
         const std::vector<int>& vi = vec[ivec];   // this vector contains boxes assigned to this team
         const int Nbx = vi.size();                // # of boxes assigned to this team
 
-        if (flag_verbose_mapper) {
-            amrex::Print() << "Mapping bucket " << LIpairV[i].second << " to rank " << ord[i] << std::endl;
-        }
+        // if (flag_verbose_mapper) {
+        //     amrex::Print() << "Mapping bucket " << LIpairV[i].second << " to rank " << ord[i] << std::endl;
+        // }
 
         if (nteams == nprocs) { // In this case, team id is process id.
             for (int j = 0; j < Nbx; ++j)

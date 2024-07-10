@@ -544,9 +544,9 @@ KnapSackDoIt (const std::vector<amrex::Long>& wgts,// length of vector is the nu
         const std::vector<int>& vi = vec[idx];
         const int N = vi.size();
 
-        if (flag_verbose_mapper) {
-            amrex::Print() << "  Mapping bucket " << idx << " to rank " << tid << std::endl;
-        }
+        // if (flag_verbose_mapper) {
+        //     amrex::Print() << "  Mapping bucket " << idx << " to rank " << tid << std::endl;
+        // }
 
         if (nteams == nprocs) {
             for (int j = 0; j < N; ++j)

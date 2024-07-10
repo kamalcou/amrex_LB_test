@@ -46,15 +46,18 @@ char* getfn(int it, char* b, char* c, char* d)
     return fn;
 }
 
-double get_maxt(int *rank, double *guess, int N,int nr) {
+double get_maxt(int *rank, long int *guess, int N,int nr) {
     double maxg[nr]={0};
     double maxt=0;
+    
     for (int r=0;r<nr;r++){ // for every bucket
+        #pragma omp parallel for
         for (int i=0;i<N;i++) { //for every element
             if(rank[i]==r){
                 maxg[r]+=guess[i]; // this guess is on bucket r so add to the sum
             }
         }
+        #pragma omp critical
         if (maxg[r]>maxt){
             maxt=maxg[r];
         }
@@ -93,7 +96,7 @@ int* ternary(int n, int nr,int N) {
         return nums;
 }
     
-void basechange_fill(int N, int nr,double *guess) {
+void basechange_fill(int N, int nr,long int *guess) {
     //int world_size,world_rank;
 
     //MPI_Comm_size(MPI_COMM_WORLD, &world_size);
@@ -110,27 +113,32 @@ void basechange_fill(int N, int nr,double *guess) {
     */
     double nmin=0;
     double nmax=pow(nr,(N));//16
-    
+    amrex::Print()<<"N= "<<N<<" nr= "<<nr<<" nmax= "<<nmax<<endl;
     int i=nmin;
+    // amrex::Print()<<__LINE__<<endl;
     while((i>=nmin) && (i<nmax)){  // for rank 0, i=0 
         int * combo = new int[N+1];
+        #pragma omp parallel for
         for (int j=0;j<N;j++){
             combo[j] = 0;
         }
+        // amrex::Print()<<__LINE__<<endl;
         //check there is more than one bucket
         if (nr!=1){
+            #pragma omp parallel
             combo=ternary(i,nr,N);    // it will work with combinations of bucket picks, which bucket pick what.
             //for the call is ternary(0,2,4)
             //for the call is ternary(1,2,4)
             //for the call is ternary(3,2,4)
             //......
-            //for the call is ternary(16,2,4)
+            //for the call is ternary(15,2,4)
 
             if (combo[0]==-1) {	    
                 cout<<"Nmax too large"<<endl;
 		        exit(0);
 	        }
         }
+        // amrex::Print()<<__LINE__<<endl;
         double maxt=get_maxt(combo,guess,N,nr);
         // for (int j=0;j<N;j++){
 	    //    // myfile<<combo[j]<<" ";
@@ -141,57 +149,63 @@ void basechange_fill(int N, int nr,double *guess) {
 	}
 }
 
-void BruteForceDoIt(int nbins, int nitems, double mean, double stdev){
+void BruteForceDoIt(int nbins, int nitems, double mean, double stdev,long int *guess){
 
     BL_PROFILE("BruteForceDoIt()");
     int N=nbins*nitems;
     int nr=nbins;
     int ranks [N];
-    double guess [N];
-    char *itn = new char[10];
 
-	std::strcpy(itn,"0\0");
+    // Parallel section to find local maxima and then the global maximum
+    // #pragma omp parallel
+    // {
+    // amrex::Print()<< "Total number of threads: "<<omp_get_thread_num()<<endl;
+    // }
+    //double guess [N];
     
-    std::string mean_str = std::to_string(mean);
-    char* mean_cstr = new char[mean_str.length() + 1];  // Allocate memory for the C-string
-    std::strcpy(mean_cstr, mean_str.c_str());
+    // char *itn = new char[10];
 
-    std::string stdev_str = std::to_string(stdev);
-    char* stdev_cstr = new char[stdev_str.length() + 1];  // Allocate memory for the C-string
-    std::strcpy(stdev_cstr, stdev_str.c_str());
-    // generate fiNames
-    char * guess_fn = getfn(1,mean_cstr,stdev_cstr,itn);
-    char * ranks_fn = getfn(2,mean_cstr,stdev_cstr,itn);
-    char * combo_fn = getfn(3,mean_cstr,stdev_cstr,itn);
-    char * temps_fn = getfn(4,mean_cstr,stdev_cstr,itn);
+	// std::strcpy(itn,"0\0");
     
-    delete[] mean_cstr;
-    delete[] stdev_cstr;
+    // std::string mean_str = std::to_string(mean);
+    // char* mean_cstr = new char[mean_str.length() + 1];  // Allocate memory for the C-string
+    // std::strcpy(mean_cstr, mean_str.c_str());
+
+    // std::string stdev_str = std::to_string(stdev);
+    // char* stdev_cstr = new char[stdev_str.length() + 1];  // Allocate memory for the C-string
+    // std::strcpy(stdev_cstr, stdev_str.c_str());
+    // // generate fiNames
+    // char * guess_fn = getfn(1,mean_cstr,stdev_cstr,itn);
+    // char * ranks_fn = getfn(2,mean_cstr,stdev_cstr,itn);
+    // char * combo_fn = getfn(3,mean_cstr,stdev_cstr,itn);
+    // char * temps_fn = getfn(4,mean_cstr,stdev_cstr,itn);
+    
+    // delete[] mean_cstr;
+    // delete[] stdev_cstr;
 
     for (int i = 0; i<nr;i++){
         ranks[i]=i;
        // myfile << ranks[i] << " ";   // write list of buckets 
     }
-    for (int i=0;i<N;i++){
-        guess[i]=amrex::RandomNormal(mean, stdev); //guess value based on the normal distribution
-	    if (guess[i]<0){
-            cout<<"negative guess, make mean higher or standard deviation smaller"<<endl;
-                exit(0);
-        }
-    }
+    // for (int i=0;i<N;i++){
+    //     //guess[i]=amrex::RandomNormal(mean, stdev); //guess value based on the normal distribution
+	//     if (guess[i]<0){
+    //         cout<<"negative guess, make mean higher or standard deviation smaller"<<endl;
+    //             exit(0);
+    //     }
+    // }
     
-
-     get_all_combos(N,nr,guess,ranks,combo_fn);
+    amrex::Print()<<__LINE__<<endl;
+     get_all_combos(N,nr,guess,ranks);
 
 
 }
-void get_all_combos(int N, int nr, double *guess, int *ranks, char *fn){
+void get_all_combos(int N, int nr, long int *guess, int *ranks){
 
     //double tot = double(pow(N,nr)); -- no use of this line
-    int combo[N];
-    int ln=0;
+    // int combo[N];
+    // int ln=0;
      
-
     // ofstream myfile;
     // myfile.open(fn);
     basechange_fill(N, nr,guess);
