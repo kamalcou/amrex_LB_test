@@ -13,6 +13,7 @@
 #include <cstring>
 #include <BruteForce.H>
 #include <AMReX_Print.H>
+#include <omp.h>
 //#include "mpi.h"
 using namespace std;
 bool array_true=false;
