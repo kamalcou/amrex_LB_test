@@ -120,9 +120,10 @@ void main_main ()
     Real stdev = 4523;
     for (int i=0; i<nitems; ++i) {
         wgts[i] = amrex::RandomNormal(mean, stdev);
+        amrex::Print()<<wgts[i]<<" , ";
        // guess[i] = amrex::RandomNormal(mean, stdev);
     }
-    
+    amrex::Print()<<std::endl;
     // Scale weights and convert to Long for algorithms.
     std::vector<Long> scaled_wgts = scale_wgts(wgts);
 
@@ -147,7 +148,7 @@ void main_main ()
    // std::vector<int> bruteForce_dmap = BruteForceDoIt(guess, nbins, k_eff, true, nmax, true, false, bytes);
     
     
-    BruteForceDoIt(nbins,nitems,mean,stdev,scaled_wgts.data());
+    // BruteForceDoIt(nbins,nitems,mean,stdev,wgts.data());
     
 
    // get_all_combos(N,nr,guess,ranks,combo_fn);  // N=total number of boxes, 

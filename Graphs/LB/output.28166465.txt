@@ -1,0 +1,97 @@
+N= 4 nr= 2 nmax= 9
+num threads: 1
+Time taken: 1 milliseconds
+N= 6 nr= 2 nmax= 33
+num threads: 1
+Time taken: 1 milliseconds
+N= 8 nr= 2 nmax= 129
+num threads: 1
+Time taken: 1 milliseconds
+N= 10 nr= 2 nmax= 513
+num threads: 1
+Time taken: 1 milliseconds
+N= 12 nr= 2 nmax= 2049
+num threads: 1
+Time taken: 1 milliseconds
+N= 14 nr= 2 nmax= 8193
+num threads: 1
+Time taken: 4 milliseconds
+N= 16 nr= 2 nmax= 32769
+num threads: 1
+Time taken: 16 milliseconds
+N= 18 nr= 2 nmax= 131073
+num threads: 1
+Time taken: 62 milliseconds
+N= 20 nr= 2 nmax= 524289
+num threads: 1
+Time taken: 258 milliseconds
+N= 22 nr= 2 nmax= 2097153
+num threads: 1
+Time taken: 1107 milliseconds
+N= 24 nr= 2 nmax= 8388609
+num threads: 1
+Time taken: 4692 milliseconds
+N= 26 nr= 2 nmax= 33554433
+num threads: 1
+Time taken: 20209 milliseconds
+N= 28 nr= 2 nmax= 134217729
+num threads: 1
+Time taken: 84076 milliseconds
+N= 30 nr= 2 nmax= 536870913
+num threads: 1
+N= 4 nr= 2 nmax= 9
+num threads: 1
+Time taken: 2 milliseconds
+N= 6 nr= 2 nmax= 33
+num threads: 1
+Time taken: 1 milliseconds
+N= 8 nr= 2 nmax= 129
+num threads: 1
+Time taken: 1 milliseconds
+N= 10 nr= 2 nmax= 513
+num threads: 1
+Time taken: 3 milliseconds
+N= 12 nr= 2 nmax= 2049
+num threads: 1
+Time taken: 2 milliseconds
+N= 14 nr= 2 nmax= 8193
+num threads: 1
+Time taken: 4 milliseconds
+N= 16 nr= 2 nmax= 32769
+num threads: 1
+Time taken: 16 milliseconds
+N= 18 nr= 2 nmax= 131073
+num threads: 1
+Time taken: 62 milliseconds
+N= 20 nr= 2 nmax= 524289
+num threads: 1
+Time taken: 264 milliseconds
+N= 22 nr= 2 nmax= 2097153
+num threads: 1
+Time taken: 1113 milliseconds
+N= 24 nr= 2 nmax= 8388609
+num threads: 1
+Time taken: 4721 milliseconds
+N= 26 nr= 2 nmax= 33554433
+num threads: 1
+Time taken: 20030 milliseconds
+N= 28 nr= 2 nmax= 134217729
+num threads: 1
+Time taken: 84021 milliseconds
+N= 30 nr= 2 nmax= 536870913
+num threads: 1
+Time taken: 365085 milliseconds
+N= 4 nr= 2 nmax= 9
+num threads: 1
+Time taken: 1 milliseconds
+N= 6 nr= 3 nmax= 365
+num threads: 1
+Time taken: 1 milliseconds
+N= 8 nr= 4 nmax= 32769
+num threads: 1
+Time taken: 13 milliseconds
+N= 10 nr= 5 nmax= 4882813
+num threads: 1
+Time taken: 1860 milliseconds
+N= 12 nr= 6 nmax= 1088391169
+num threads: 1

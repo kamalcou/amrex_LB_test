@@ -1,0 +1,49 @@
+N= 4 nr= 2 nmax= 9
+combo for i= 0
+0 0 0 0 
+maxt= combo for i= 8
+1 0 0 0 
+maxt= 293316.284878
+maxt_comb
+1 0 0 0 
+combo for i= 2
+0 0 1 0 
+maxt= 289669.590221
+maxt_comb
+0 0 1 0 
+combo for i= 6
+0 1 1 0 
+maxt= combo for i= 4
+198179.365402
+maxt_comb
+combo for i= 0 1 1 0 
+combo for i= 3
+0 0 1 1 
+maxt= combo for i= 5
+0 1 0 1 
+maxt= 392764.633637202543.392174
+maxt_comb
+0 1 0 1 
+198231.962893
+maxt_comb
+0 0 1 1 
+combo for i= 1
+0 0 0 1 
+maxt= 7
+0 1 1 1 
+maxt= 297627.714160
+maxt_comb
+0 0 0 1 
+0 1 0 0 
+maxt= 293316.284878
+maxt_comb
+0 1 1 1 
+297680.311651
+maxt_comb
+0 1 0 0 
+
+maxt_comb
+0 0 0 0 
+global maxima: 392764.633637 position= 0
+0 0 0 0 
+Time taken: 0 seconds

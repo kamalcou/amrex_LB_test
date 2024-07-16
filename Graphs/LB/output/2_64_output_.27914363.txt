@@ -1,0 +1,18 @@
+Initializing AMReX (24.05-32-g28b010126a1b)...
+OMP initialized with 256 OMP threads
+AMReX (24.05-32-g28b010126a1b) initialized
+Number of buckets: 2
+Number of boxes: 64
+DM: KnapSackDoIt called...
+
+
+  Bucket 0 total weight: 27933443214
+  Bucket 1 total weight: 27931718006
+KNAPSACK efficiency: 0.9999691193
+DM: SFCProcessorMapDoIt called...
+  (nprocs, nteams, nworkers) = (2, 2, 1)
+  Bucket 0 contains 27220428179
+  Bucket 1 contains 28644733041
+SFC efficiency: 0.9751384511
+234
+N= 128 nr= 2 nmax= -9223372036854775808

@@ -1,0 +1,3 @@
+N= 4 nr= 2 nmax= 9
+num threads: 32
+Time taken: 3 milliseconds

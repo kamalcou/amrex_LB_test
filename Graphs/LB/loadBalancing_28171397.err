@@ -1,0 +1,3 @@
+/var/spool/slurmd/job28171397/slurm_script: line 31: 1621585 Killed                  ./bf 2 2 >> output.$SLURM_JOBID.txt
+slurmstepd: error: *** JOB 28171397 ON nid004272 CANCELLED AT 2024-07-16T01:31:52 DUE TO TIME LIMIT ***
+slurmstepd: error: Detected 1 oom_kill event in StepId=28171397.batch. Some of the step tasks have been OOM Killed.

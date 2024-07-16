@@ -1,0 +1,84 @@
+N= 4 nr= 2 nmax= 9
+num threads: 4
+chunk_size: 2
+global maxima: 392764.633637 position= 0
+0 0 0 0 
+Time taken: 2 milliseconds
+N= 6 nr= 2 nmax= 33
+num threads: 4
+chunk_size: 8
+global maxima: 596284.002887 position= 0
+0 0 0 0 0 0 
+Time taken: 1 milliseconds
+N= 8 nr= 2 nmax= 129
+num threads: 4
+chunk_size: 32
+global maxima: 794054.023296 position= 0
+0 0 0 0 0 0 0 0 
+Time taken: 2 milliseconds
+N= 10 nr= 2 nmax= 513
+num threads: 4
+chunk_size: 128
+global maxima: 997053.819305 position= 0
+0 0 0 0 0 0 0 0 0 0 
+Time taken: 1 milliseconds
+N= 12 nr= 2 nmax= 2049
+num threads: 4
+chunk_size: 512
+global maxima: 1208345.027038 position= 0
+0 0 0 0 0 0 0 0 0 0 0 0 
+Time taken: 2 milliseconds
+N= 14 nr= 2 nmax= 8193
+num threads: 4
+chunk_size: 2048
+global maxima: 1416506.196819 position= 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Time taken: 3 milliseconds
+N= 16 nr= 2 nmax= 32769
+num threads: 4
+chunk_size: 8192
+global maxima: 1614404.561476 position= 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Time taken: 9 milliseconds
+N= 18 nr= 2 nmax= 131073
+num threads: 4
+chunk_size: 32768
+global maxima: 1817214.548146 position= 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Time taken: 36 milliseconds
+N= 20 nr= 2 nmax= 524289
+num threads: 4
+chunk_size: 131072
+global maxima: 2000894.624459 position= 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Time taken: 136 milliseconds
+N= 22 nr= 2 nmax= 2097153
+num threads: 4
+chunk_size: 524288
+global maxima: 2195040.482161 position= 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Time taken: 567 milliseconds
+N= 24 nr= 2 nmax= 8388609
+num threads: 4
+chunk_size: 2097152
+global maxima: 2386153.147845 position= 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Time taken: 2345 milliseconds
+N= 26 nr= 2 nmax= 33554433
+num threads: 4
+chunk_size: 8388608
+global maxima: 2582047.207112 position= 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Time taken: 9927 milliseconds
+N= 28 nr= 2 nmax= 134217729
+num threads: 4
+chunk_size: 33554432
+global maxima: 2778138.725685 position= 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Time taken: 40945 milliseconds
+N= 30 nr= 2 nmax= 536870913
+num threads: 4
+chunk_size: 134217728
+global maxima: 2981687.053081 position= 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+Time taken: 171769 milliseconds

@@ -1,0 +1,6 @@
+N= 5 nr= 2 nmax= 17
+num threads: 4
+chunk_size: 4
+global maxima: 492915.111479 position= 0
+0 0 0 0 0 
+Time taken: 0 seconds

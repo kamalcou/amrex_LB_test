@@ -1,0 +1,43 @@
+N= 4 nr= 2 nmax= 9
+num threads: 16
+N= 6 nr= 2 nmax= 33
+num threads: 16
+Time taken: 2 milliseconds
+N= 8 nr= 2 nmax= 129
+num threads: 16
+Time taken: 1 milliseconds
+N= 10 nr= 2 nmax= 513
+num threads: 16
+Time taken: 1 milliseconds
+N= 12 nr= 2 nmax= 2049
+num threads: 16
+Time taken: 1 milliseconds
+N= 14 nr= 2 nmax= 8193
+num threads: 16
+Time taken: 2 milliseconds
+N= 16 nr= 2 nmax= 32769
+num threads: 16
+Time taken: 8 milliseconds
+N= 18 nr= 2 nmax= 131073
+num threads: 16
+Time taken: 37 milliseconds
+N= 20 nr= 2 nmax= 524289
+num threads: 16
+Time taken: 144 milliseconds
+N= 22 nr= 2 nmax= 2097153
+num threads: 16
+Time taken: 600 milliseconds
+N= 24 nr= 2 nmax= 8388609
+num threads: 16
+Time taken: 2520 milliseconds
+N= 26 nr= 2 nmax= 33554433
+num threads: 16
+Time taken: 10739 milliseconds
+N= 28 nr= 2 nmax= 134217729
+num threads: 16
+Time taken: 46164 milliseconds
+N= 30 nr= 2 nmax= 536870913
+num threads: 16
+Time taken: 195430 milliseconds
+N= 4 nr= 2 nmax= 9
+num threads: 16

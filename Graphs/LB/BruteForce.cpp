@@ -47,26 +47,32 @@ char* getfn(int it, char* b, char* c, char* d)
     return fn;
 }
 
-double get_maxt(int *rank, long int *guess, int N,int nr) {
+double get_maxt(int *combo, double *guess, int N,int nr) {
     double maxg[nr]={0};
     double maxt=0;
+    int thread_rank = omp_get_thread_num();
     
     for (int r=0;r<nr;r++){ // for every bucket
-        #pragma omp parallel for
+       // #pragma omp parallel for
         for (int i=0;i<N;i++) { //for every element
-            if(rank[i]==r){
+            if(combo[i]==r){
                 maxg[r]+=guess[i]; // this guess is on bucket r so add to the sum
+                // if(thread_rank==0)
+                //     amrex::Print()<<"maxg[r]="<<maxg[r]<<" i= "<<i<<" , "<<" guess: "<<guess[i]<<" , ";
             }
+             
         }
-        #pragma omp critical
+        
+        //#pragma omp critical
         if (maxg[r]>maxt){
             maxt=maxg[r];
         }
     }
+    //  amrex::Print()<<std::endl;
     return maxt;
 }
 
-int* ternary(int n, int nr,int N) {
+int* ternary(long int n, int nr,int N) {
     int * nums = new int[N];
     for(int i=0;i<N;i++) nums[i]=0;
     int L=N;
@@ -84,7 +90,7 @@ int* ternary(int n, int nr,int N) {
     //r=0, nums[]=1
 
     while (n){
-        auto dv= std::div(n,nr);
+        auto dv= std::div(n,(long int)(nr));
         n = dv.quot;
 	    int r = dv.rem;
         if (L==0){
@@ -97,7 +103,7 @@ int* ternary(int n, int nr,int N) {
         return nums;
 }
     
-void basechange_fill(int N, int nr,long int *guess) {
+void basechange_fill(int N, int nr,double *guess,int *ranks) {
     //int world_size,world_rank;
 
     //MPI_Comm_size(MPI_COMM_WORLD, &world_size);
@@ -112,45 +118,95 @@ void basechange_fill(int N, int nr,long int *guess) {
     nmax=pow(2,4)=16
     
     */
-    double nmin=0;
-    double nmax=pow(nr,(N));//16
+    int global_maxima=0;
+    long int position=-112;
+
+    long int nmin=0;
+    long int nmax=double(pow(nr,(N))/2.+1);//16 
     amrex::Print()<<"N= "<<N<<" nr= "<<nr<<" nmax= "<<nmax<<endl;
-    int i=nmin;
+
+    std::vector<int> maxElements(nmax);
+    //int i=nmin;
     // amrex::Print()<<__LINE__<<endl;
-    while((i>=nmin) && (i<nmax)){  // for rank 0, i=0 
-        int * combo = new int[N+1];
-        #pragma omp parallel for
-        for (int j=0;j<N;j++){
-            combo[j] = 0;
-        }
-        // amrex::Print()<<__LINE__<<endl;
-        //check there is more than one bucket
-        if (nr!=1){
-            #pragma omp parallel
-            combo=ternary(i,nr,N);    // it will work with combinations of bucket picks, which bucket pick what.
-            //for the call is ternary(0,2,4)
-            //for the call is ternary(1,2,4)
-            //for the call is ternary(3,2,4)
-            //......
-            //for the call is ternary(15,2,4)
+   // while((i>=nmin) && (i<nmax)){
+      BL_PROFILE("basechange_fill()");
+       #pragma omp parallel 
+       {
+           int thread_rank = omp_get_thread_num();
+           
+           int num_threads=omp_get_num_threads();
+        //    if(thread_rank==0)
+        //     amrex::Print()<< "Total number of threads: "<<num_threads<<std::endl;
 
-            if (combo[0]==-1) {	    
-                cout<<"Nmax too large"<<endl;
-		        exit(0);
-	        }
-        }
-        // amrex::Print()<<__LINE__<<endl;
-        double maxt=get_maxt(combo,guess,N,nr);
-        // for (int j=0;j<N;j++){
-	    //    // myfile<<combo[j]<<" ";
-	    //    amrex::Print()<<combo[j]<<" ";
-	    //     }
-	    // myfile<<maxt<<endl;
-	    i++;
-	}
-}
+       
+        #pragma omp for
+        for(long int i=nmin;i<nmax;i++){   // for rank 0, i=0 
+            int * combo = new int[N+1];
+            
+            for (int j=0;j<N;j++){
+                combo[j] = 0;
+            }
+            // amrex::Print()<<__LINE__<<endl;
+            //check there is more than one bucket
+            if (nr!=1){
+                #pragma omp parallel
+                combo=ternary(i,nr,N);    // it will work with combinations of bucket picks, which bucket pick what.
+                
+                amrex::Print()<<std::endl<<"combo for i= "<<i<<std::endl;
+                for(int i=0;i<N;i++){
+                    amrex::Print()<<combo[i] <<" ";
+                }                    
+                amrex::Print()<<std::endl;  
+                                            //for the call is ternary(0,2,4)
+                                            //for the call is ternary(1,2,4)
+                                            //for the call is ternary(3,2,4)
+                                            //......
+                                            //for the call is ternary(15,2,4)
+                // if(thread_rank==0){
 
-void BruteForceDoIt(int nbins, int nitems, double mean, double stdev,long int *guess){
+                
+                //     amrex::Print()<<"combo for i="<<i<<std::endl;
+                //     for(int ii=0; ii<N;ii++)
+                //         amrex::Print()<<combo[ii]<<" ";
+                //     amrex::Print()<<std::endl;
+                // }
+                if (combo[0]==-1) {	    
+                    cout<<"Nmax too large"<<endl;
+                    exit(0);
+                }
+            }
+            // amrex::Print()<<__LINE__<<endl;
+            double maxt=get_maxt(combo,guess,N,nr);
+            // if(thread_rank==0)
+            //     amrex::Print()<< "i= "<<i<<" Thread rank: "<<thread_rank<<" maxt: "<<maxt<<std::endl;
+            maxElements[i]=maxt;
+            // for (int j=0;j<N;j++){
+            //    // myfile<<combo[j]<<" ";
+            //    amrex::Print()<<combo[j]<<" ";
+            //     }
+            // myfile<<maxt<<endl;
+            //i++;
+        }
+       }
+       #pragma parallel critical
+       for(long int i=nmin;i<nmax;i++){
+           if (maxElements[i] > global_maxima) {
+                global_maxima = maxElements[i];
+                position=i;
+            }
+       }
+
+       int * final_combo = new int[N+1];
+       final_combo=ternary(position,nr,N);
+    // print here maxt  and i for combination
+    //amrex::Print()<<"global maxima "<<global_maxima<<" position ";
+    // for(int i=0; i<N;i++)
+    //     amrex::Print()<<final_combo[i]<<" ";
+
+    // amrex::Print()<<std::endl;
+}  
+
+void BruteForceDoIt(int nbins, int nitems, double mean, double stdev,double *guess){
 
     BL_PROFILE("BruteForceDoIt()");
     int N=nbins*nitems;
@@ -196,12 +252,12 @@ void BruteForceDoIt(int nbins, int nitems, double mean, double stdev,long int *g
     //     }
     // }
     
-    amrex::Print()<<__LINE__<<endl;
+    // amrex::Print()<<__LINE__<<endl;
      get_all_combos(N,nr,guess,ranks);
 
 
 }
-void get_all_combos(int N, int nr, long int *guess, int *ranks){
+void get_all_combos(int N, int nr, double *guess, int *ranks){
 
     //double tot = double(pow(N,nr)); -- no use of this line
     // int combo[N];
@@ -209,7 +265,7 @@ void get_all_combos(int N, int nr, long int *guess, int *ranks){
      
     // ofstream myfile;
     // myfile.open(fn);
-    basechange_fill(N, nr,guess);
+    basechange_fill(N, nr,guess,ranks);
     // myfile.close();
     return;
     }

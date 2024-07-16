@@ -1,0 +1,6 @@
+/var/spool/slurmd/job28166743/slurm_script: line 27: =0*2: command not found
+/var/spool/slurmd/job28166743/slurm_script: line 27: =2*2: command not found
+/var/spool/slurmd/job28166743/slurm_script: line 27: =4*2: command not found
+/var/spool/slurmd/job28166743/slurm_script: line 27: =6*2: command not found
+/var/spool/slurmd/job28166743/slurm_script: line 27: =8*2: command not found
+/var/spool/slurmd/job28166743/slurm_script: line 27: =10*2: command not found

@@ -1,0 +1,23 @@
+/var/spool/slurmd/job28171331/slurm_script: line 52: 1081671 Killed                  ./bf 7 2 >> output.$SLURM_JOBID.txt
+terminate called after throwing an instance of 'std::bad_alloc'
+  what():  std::bad_alloc
+/var/spool/slurmd/job28171331/slurm_script: line 53: 1081976 Aborted                 ./bf 9 2 >> output.$SLURM_JOBID.txt
+terminate called after throwing an instance of 'std::length_error'
+  what():  cannot create std::vector larger than max_size()
+/var/spool/slurmd/job28171331/slurm_script: line 54: 1081978 Aborted                 ./bf 10 2 >> output.$SLURM_JOBID.txt
+terminate called after throwing an instance of 'std::length_error'
+  what():  cannot create std::vector larger than max_size()
+/var/spool/slurmd/job28171331/slurm_script: line 55: 1081979 Aborted                 ./bf 11 2 >> output.$SLURM_JOBID.txt
+terminate called after throwing an instance of 'std::length_error'
+  what():  cannot create std::vector larger than max_size()
+/var/spool/slurmd/job28171331/slurm_script: line 56: 1081980 Aborted                 ./bf 12 2 >> output.$SLURM_JOBID.txt
+terminate called after throwing an instance of 'std::length_error'
+  what():  cannot create std::vector larger than max_size()
+/var/spool/slurmd/job28171331/slurm_script: line 57: 1081981 Aborted                 ./bf 13 2 >> output.$SLURM_JOBID.txt
+terminate called after throwing an instance of 'std::length_error'
+  what():  cannot create std::vector larger than max_size()
+/var/spool/slurmd/job28171331/slurm_script: line 58: 1081982 Aborted                 ./bf 14 2 >> output.$SLURM_JOBID.txt
+terminate called after throwing an instance of 'std::length_error'
+  what():  cannot create std::vector larger than max_size()
+/var/spool/slurmd/job28171331/slurm_script: line 59: 1081983 Aborted                 ./bf 15 2 >> output.$SLURM_JOBID.txt
+slurmstepd: error: Detected 1 oom_kill event in StepId=28171331.batch. Some of the step tasks have been OOM Killed.

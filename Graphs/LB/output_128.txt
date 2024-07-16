@@ -1,0 +1,15 @@
+N= 4 nr= 2 nmax= 9
+num threads: 128
+Time taken: 7 milliseconds
+N= 6 nr= 3 nmax= 365
+num threads: 128
+Time taken: 9 milliseconds
+N= 8 nr= 4 nmax= 32769
+num threads: 128
+Time taken: 11 milliseconds
+N= 10 nr= 5 nmax= 4882813
+num threads: 128
+Time taken: 995 milliseconds
+N= 12 nr= 6 nmax= 1088391169
+num threads: 128
+Time taken: 230244 milliseconds
