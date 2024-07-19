@@ -1,0 +1,27 @@
+N= 28 nr= 2 nmax= 134217729
+num threads: 1
+Time taken: 83697 milliseconds
+N= 28 nr= 2 nmax= 134217729
+num threads: 2
+Time taken: 56250 milliseconds
+N= 28 nr= 2 nmax= 134217729
+num threads: 4
+Time taken: 40600 milliseconds
+N= 28 nr= 2 nmax= 134217729
+num threads: 8
+Time taken: 42726 milliseconds
+N= 28 nr= 2 nmax= 134217729
+num threads: 16
+Time taken: 46865 milliseconds
+N= 28 nr= 2 nmax= 134217729
+num threads: 32
+Time taken: 52484 milliseconds
+N= 28 nr= 2 nmax= 134217729
+num threads: 64
+Time taken: 54665 milliseconds
+N= 28 nr= 2 nmax= 134217729
+num threads: 128
+Time taken: 56224 milliseconds
+N= 28 nr= 2 nmax= 134217729
+num threads: 256
+Time taken: 56864 milliseconds

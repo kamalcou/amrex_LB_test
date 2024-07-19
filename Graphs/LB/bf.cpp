@@ -19,15 +19,17 @@ double max_val(double* A, int i, int j)
 {
     double max_val = A[0];
 
-    #pragma omp parallel for reduction(max:max_val) 
+    //#pragma omp parallel for reduction(max:max_val) 
     for (int idx = i; idx < j; idx++){
         max_val = max_val > A[idx] ? max_val : A[idx];
         //*position=idx;
     }
        
 
-    return max_val;
+    return max_val; 
 }
+
+
 double get_maxt(int *combo, int *maxt_comb, double *guess, int N,int nr) {
     double maxg[nr]={0};
     double maxt=0;
@@ -82,52 +84,46 @@ int* ternary(long int n, int nr,int N) {
 
 void get_all_combos(int N, int nr, double *guess, int *ranks){
 
-    double global_maxima=0;
-    long int position=-112;
+    
 
     long int nmin=0;
     long int nmax=double(pow(nr,(N))/2.+1);//9 
     cout<<"N= "<<N<<" nr= "<<nr<<" nmax= "<<nmax<<endl;
-    //int precision = std::numeric_limits<double>::max_digits10;
-    //int thread_rank = omp_get_thread_num();   
     
-//     cout<<"get_all_combos function guess:"<<endl;
-//     for (int i=0;i<N;i++){
-//         cout<<setprecision(precision)<<guess[i]<<" ";
-//     }
-//    cout<<endl;
-    std::vector<double> maxElements(nmax);
+    double local_max=0,global_max=0;
+    
+    //std::vector<double> maxElements(nmax);
     //int i=nmin;
     // amrex::Print()<<__LINE__<<endl;
    // while((i>=nmin) && (i<nmax)){
     //   BL_PROFILE("basechange_fill()");
    // omp_set_num_threads(num_threads);
-     #pragma omp parallel 
+     #pragma omp parallel default(none) shared(N,nmax,flag,global_max) private(start,end,i,local_max,combo,maxt_comb,maxt) 
        {
            
         //    if(thread_rank==0)
         //     amrex::Print()<< "Total number of threads: "<<num_threads<<std::endl;
       
        int num_threads=omp_get_num_threads(); 
-       int thread_rank = omp_get_thread_num();  
+       int rank = omp_get_thread_num();  
        
        int chunk_size=nmax/num_threads;
-       if(thread_rank==0){
-        cout<<"num threads: "<<num_threads<<endl;
-        // cout<<"chunk_size: "<<chunk_size<<endl;
-       }
-        #pragma omp  for 
-        //schedule(static,chunk_size) 
-        //shared(maxElements)
-        for(long int i=nmin;i<nmax;i++){   // for rank 0, i=0 
+        int start=rank*chunk_size;
+        int end=start+chunk_size;
+      
+    
+        for(long int i=start;i<end;i++){   // for rank 0, i=0 
             int * combo = new int[N+1];
             int * maxt_comb=new int[N+1];
-            int thread_rank = omp_get_thread_num();  
-            int num_threads=omp_get_num_threads(); 
+            // int thread_rank = omp_get_thread_num(); 
+            //double * guess2=new double[N+1]; 
 
-            for (int j=0;j<N;j++){
+            
+            
+            for (int j=0;j<N+1;j++){
                 combo[j] = 0;
                 maxt_comb[j]=0;
+                // guess2[i]=guess[i];
             }
             // amrex::Print()<<__LINE__<<endl;
             //check there is more than one bucket
@@ -135,51 +131,28 @@ void get_all_combos(int N, int nr, double *guess, int *ranks){
                 // #pragma omp parallel
                 combo=ternary(i,nr,N);    // it will work with combinations of bucket picks, which bucket pick what.
                 
-                // cout<<"combo for i= "<<i<<" thread_rank: "<<thread_rank<<" num_threads: "<<num_threads<<endl;
-                // for(int i=0;i<N;i++){
-                //     cout<<combo[i] <<" ";
-                // }                    
-                // cout<<endl;  
-            
-               
-                                            
-                // if(thread_rank==0){
-
-                
-                //     amrex::Print()<<"combo for i="<<i<<std::endl;
-                //     for(int ii=0; ii<N;ii++)
-                //         amrex::Print()<<combo[ii]<<" ";
-                //     amrex::Print()<<std::endl;
-                // }
                 if (combo[0]==-1) {	    
                     cout<<"Nmax too large"<<endl;
                     exit(0);
                 }
             }
-            // amrex::Print()<<__LINE__<<endl;
-            // cout<<__LINE__<<endl;
+            
             double maxt=get_maxt(combo,maxt_comb,guess,N,nr);
-            maxElements[i]=maxt;
-            // #pragma omp critical 
+            if(local_max<maxt)
+                {
+                    local_max=maxt;
+                }
+                       
+                
+            #pragma omp critical 
             {
-                if(global_maxima<maxt){
-                    global_maxima=maxt;
+                if(global_max<local_max){
+                    global_max=local_max;
                     position=i;
                 }
-            // if(thread_rank==0)
-            //     amrex::Print()<< "i= "<<i<<" Thread rank: "<<thread_rank<<" maxt: "<<maxt<<std::endl;
-            // 
+            
             }
-            // cout<<__LINE__<<endl;
-           
-            // cout<<"maxt_comb"<<endl;
-            // for (int j=0;j<N;j++){
-            //    // myfile<<combo[j]<<" ";
-            //    cout<<maxt_comb[j]<<" ";
-            //     }
-            // cout<<endl;
-            // myfile<<maxt<<endl;
-            //i++;
+            
         }
        }
     //    #pragma omp parallel for reduction(max:global_maxima) 

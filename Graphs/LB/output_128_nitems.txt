@@ -1,0 +1,87 @@
+N= 4 nr= 2 nmax= 9
+num threads: 128
+Time taken: 7 milliseconds
+N= 6 nr= 2 nmax= 33
+num threads: 128
+Time taken: 6 milliseconds
+N= 8 nr= 2 nmax= 129
+num threads: 128
+Time taken: 8 milliseconds
+N= 10 nr= 2 nmax= 513
+num threads: 128
+Time taken: 9 milliseconds
+N= 12 nr= 2 nmax= 2049
+num threads: 128
+Time taken: 8 milliseconds
+N= 14 nr= 2 nmax= 8193
+num threads: 128
+Time taken: 23 milliseconds
+N= 16 nr= 2 nmax= 32769
+num threads: 128
+Time taken: 11 milliseconds
+N= 18 nr= 2 nmax= 131073
+num threads: 128
+Time taken: 34 milliseconds
+N= 20 nr= 2 nmax= 524289
+num threads: 128
+Time taken: 173 milliseconds
+N= 22 nr= 2 nmax= 2097153
+num threads: 128
+Time taken: 754 milliseconds
+N= 24 nr= 2 nmax= 8388609
+num threads: 128
+Time taken: 3115 milliseconds
+N= 26 nr= 2 nmax= 33554433
+num threads: 128
+Time taken: 13505 milliseconds
+N= 28 nr= 2 nmax= 134217729
+num threads: 128
+Time taken: 56221 milliseconds
+N= 30 nr= 2 nmax= 536870913
+num threads: 128
+N= 4 nr= 2 nmax= 9
+num threads: 128
+Time taken: 8 milliseconds
+N= 6 nr= 2 nmax= 33
+num threads: 128
+Time taken: 6 milliseconds
+Time taken: 244651 milliseconds
+N= 8 nr= 2 nmax= 129
+num threads: 128
+Time taken: 10 milliseconds
+N= 10 nr= 2 nmax= 513
+num threads: 128
+Time taken: 9 milliseconds
+N= 12 nr= 2 nmax= 2049
+num threads: 128
+Time taken: 9 milliseconds
+N= 14 nr= 2 nmax= 8193
+num threads: 128
+Time taken: 10 milliseconds
+N= 16 nr= 2 nmax= 32769
+num threads: 128
+Time taken: 10 milliseconds
+N= 18 nr= 2 nmax= 131073
+num threads: 128
+Time taken: 38 milliseconds
+N= 20 nr= 2 nmax= 524289
+num threads: 128
+Time taken: 175 milliseconds
+N= 22 nr= 2 nmax= 2097153
+num threads: 128
+Time taken: 756 milliseconds
+N= 24 nr= 2 nmax= 8388609
+num threads: 128
+Time taken: 3103 milliseconds
+N= 26 nr= 2 nmax= 33554433
+num threads: 128
+Time taken: 13590 milliseconds
+N= 28 nr= 2 nmax= 134217729
+num threads: 128
+Time taken: 56364 milliseconds
+N= 30 nr= 2 nmax= 536870913
+num threads: 128
+Time taken: 249710 milliseconds
+N= 30 nr= 2 nmax= 536870913
+num threads: 128
+Time taken: 244769 milliseconds
