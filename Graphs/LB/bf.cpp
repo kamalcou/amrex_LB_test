@@ -86,19 +86,22 @@ void get_all_combos(int N, int nr, double *guess, int *ranks){
 
     
 
-    long int nmin=0;
-    long int nmax=double(pow(nr,(N))/2.+1);//9 
-    cout<<"N= "<<N<<" nr= "<<nr<<" nmax= "<<nmax<<endl;
+    unsigned long long int nmin=0;
+    unsigned long long int nmax=double(pow(nr,(N))/2.);//8
+    cout<<" nr= "<<nr<< " items= "<<N/nr<<" nmax= "<<nmax<<endl;
     
     double local_max=0,global_max=0;
+    unsigned int position;
+    unsigned long int i;
+    int j;
     
-    //std::vector<double> maxElements(nmax);
-    //int i=nmin;
-    // amrex::Print()<<__LINE__<<endl;
-   // while((i>=nmin) && (i<nmax)){
-    //   BL_PROFILE("basechange_fill()");
-   // omp_set_num_threads(num_threads);
-     #pragma omp parallel default(none) shared(N,nmax,flag,global_max) private(start,end,i,local_max,combo,maxt_comb,maxt) 
+    // cout<<"get_all_combos function guess:"<<endl;
+    // for (int i=0;i<N;i++){
+    //         cout<<guess[i]<<" ";
+    //     }
+    // cout<<endl;
+    
+     #pragma omp parallel default(none) shared(N,nr,nmax,global_max,guess,cout,position) private(i,j,local_max) 
        {
            
         //    if(thread_rank==0)
@@ -107,12 +110,15 @@ void get_all_combos(int N, int nr, double *guess, int *ranks){
        int num_threads=omp_get_num_threads(); 
        int rank = omp_get_thread_num();  
        
-       int chunk_size=nmax/num_threads;
-        int start=rank*chunk_size;
-        int end=start+chunk_size;
+       unsigned long int chunk_size=nmax/num_threads;
+       unsigned long int start=rank*chunk_size;
+       unsigned long int end=start+chunk_size;
       
-    
-        for(long int i=start;i<end;i++){   // for rank 0, i=0 
+       // cout<<"Rank: "<<rank<<" start: "<<start<<" end: "<<end<<endl;
+
+        
+
+        for( i=start;i<end;i++){   // for rank 0, i=0 
             int * combo = new int[N+1];
             int * maxt_comb=new int[N+1];
             // int thread_rank = omp_get_thread_num(); 
@@ -120,7 +126,7 @@ void get_all_combos(int N, int nr, double *guess, int *ranks){
 
             
             
-            for (int j=0;j<N+1;j++){
+            for (j=0;j<N+1;j++){
                 combo[j] = 0;
                 maxt_comb[j]=0;
                 // guess2[i]=guess[i];
@@ -141,10 +147,14 @@ void get_all_combos(int N, int nr, double *guess, int *ranks){
             if(local_max<maxt)
                 {
                     local_max=maxt;
+                    
                 }
-                       
-                
-            #pragma omp critical 
+            // cout<<"rank: "<<rank<<fixed<<" local_max: "<<local_max<<endl;           
+            // #pragma openmp barrier
+
+
+            #pragma omp reduction( < : global_max)
+           //critical 
             {
                 if(global_max<local_max){
                     global_max=local_max;
@@ -152,8 +162,14 @@ void get_all_combos(int N, int nr, double *guess, int *ranks){
                 }
             
             }
+           
             
         }
+         if(rank==0)
+            {    cout<<"number of threads: "<<num_threads<<endl;
+                cout<<"rank: "<<rank<<fixed<<" global_max: "<<local_max<<endl;
+            }
+            
        }
     //    #pragma omp parallel for reduction(max:global_maxima) 
     // for (int idx = i; idx < j; idx++)
@@ -168,9 +184,9 @@ void get_all_combos(int N, int nr, double *guess, int *ranks){
     //         }
     //    }
     // Convert std::vector<double> to double*
-    double* data_ptr = maxElements.data();
-    int *posi;
-   global_maxima= max_val(data_ptr,nmin,nmax);
+//     double* data_ptr = maxElements.data();
+//     int *posi;
+//    global_maxima= max_val(data_ptr,nmin,nmax);
     // int * final_combo = new int[N+1];
     // final_combo=ternary(position,nr,N);
     // print here maxt  and i for combination

@@ -42,7 +42,7 @@ CC bf.cpp -o bf -fopenmp
     # ./bf 2 13 >> output.$OMP_NUM_THREADS.txt
     # ./bf 2 14 >> output.$OMP_NUM_THREADS.txt
     # ./bf 2 15 >> output.$OMP_NUM_THREADS.txt
-    export OMP_NUM_THREADS=32
+    export OMP_NUM_THREADS=1
     echo "########################"
     ./bf 2 2 >> output.$OMP_NUM_THREADS.txt
     ./bf 3 2 >> output.$OMP_NUM_THREADS.txt
