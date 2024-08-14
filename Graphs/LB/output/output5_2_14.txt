@@ -1,0 +1,36 @@
+ nr= 2 items= 14 nmax= 134217729
+number of threads: 1
+rank: 0 global_max: 2778138.725685
+Time taken: 85249 milliseconds
+ nr= 2 items= 14 nmax= 134217729
+number of threads: 2
+rank: 0 global_max: 2778138.725685
+Time taken: 57294 milliseconds
+ nr= 2 items= 14 nmax= 134217729
+number of threads: 4
+rank: 0 global_max: 2778138.725685
+Time taken: 41704 milliseconds
+ nr= 2 items= 14 nmax= 134217729
+number of threads: 8
+rank: 0 global_max: 2778138.725685
+Time taken: 43949 milliseconds
+ nr= 2 items= 14 nmax= 134217729
+number of threads: 16
+rank: 0 global_max: 2778138.725685
+Time taken: 45955 milliseconds
+ nr= 2 items= 14 nmax= 134217729
+number of threads: 32
+rank: 0 global_max: 2778138.725685
+Time taken: 46119 milliseconds
+ nr= 2 items= 14 nmax= 134217729
+number of threads: 64
+rank: 0 global_max: 2778138.725685
+Time taken: 53265 milliseconds
+ nr= 2 items= 14 nmax= 134217729
+number of threads: 128
+rank: 0 global_max: 2778138.725685
+Time taken: 55349 milliseconds
+ nr= 2 items= 14 nmax= 134217729
+number of threads: 256
+rank: 0 global_max: 2778138.725685
+Time taken: 57527 milliseconds

@@ -9,6 +9,7 @@
 
 #include <iomanip>
 #include <limits>
+#include <sys/time.h>
 
 //#include "mpi.h"
 using namespace std;
@@ -30,7 +31,7 @@ double max_val(double* A, int i, int j)
 }
 
 
-double get_maxt(int *combo, int *maxt_comb, double *guess, int N,int nr) {
+double get_maxt(int *combo, double *guess, int N,int nr) {
     double maxg[nr]={0};
     double maxt=0;
     // int thread_rank = omp_get_thread_num();
@@ -50,9 +51,9 @@ double get_maxt(int *combo, int *maxt_comb, double *guess, int N,int nr) {
         //#pragma omp critical
         if (maxg[r]>maxt){
             maxt=maxg[r];
-            for (int i=0;i<N;i++){
-                maxt_comb[i]=combo[i];
-            }
+            // for (int i=0;i<N;i++){
+            //     maxt_comb[i]=combo[i];
+            // }
             
         }
         
@@ -62,7 +63,25 @@ double get_maxt(int *combo, int *maxt_comb, double *guess, int N,int nr) {
     return maxt;
 }
 
-int* ternary(long int n, int nr,int N) {
+// int* ternary(long int n, int base, int N) {
+//     int * nums = new int[N];
+//     for(int i=0;i<N;i++) nums[i]=0;
+//     int index = N;
+
+//     while (n && index > 0) {
+//         auto dv = std::div(n, (long int)base);
+//         n = dv.quot;
+//         nums[--index] = dv.rem;
+//     }
+
+//     if (index > 0) {
+//         nums[0] = -1; // Indicate an error or incomplete result
+//     }
+//     for(int i=0;i<N;i++)
+//         cout<<nums[i]<<", "<<endl;
+//     return nums;
+// }
+ int*  ternary(long int n, int nr,int N) {
     int * nums = new int[N];
     for(int i=0;i<N;i++) nums[i]=0;
     int L=N;
@@ -87,21 +106,21 @@ void get_all_combos(int N, int nr, double *guess, int *ranks){
     
 
     unsigned long long int nmin=0;
-    unsigned long long int nmax=double(pow(nr,(N))/2.);//8
+    unsigned long long int nmax=double(pow(nr,(N))/2.+1);//8
     cout<<" nr= "<<nr<< " items= "<<N/nr<<" nmax= "<<nmax<<endl;
     
     double local_max=0,global_max=0;
     unsigned int position;
     unsigned long int i;
     int j;
-    
+    struct timeval t1, t2,t3,t4, reduction_before,reduction_after,combo_before,combo_after;
     // cout<<"get_all_combos function guess:"<<endl;
     // for (int i=0;i<N;i++){
     //         cout<<guess[i]<<" ";
     //     }
     // cout<<endl;
-    
-     #pragma omp parallel default(none) shared(N,nr,nmax,global_max,guess,cout,position) private(i,j,local_max) 
+     gettimeofday (&t1, NULL);
+     #pragma omp parallel default(none) shared(nr,N,nmax,global_max,guess,cout,position) private(i,j,local_max, t2,t3,reduction_before,reduction_after,combo_before,combo_after) 
        {
            
         //    if(thread_rank==0)
@@ -114,36 +133,89 @@ void get_all_combos(int N, int nr, double *guess, int *ranks){
        unsigned long int start=rank*chunk_size;
        unsigned long int end=start+chunk_size;
       
-       // cout<<"Rank: "<<rank<<" start: "<<start<<" end: "<<end<<endl;
+    //    cout<<"Rank: "<<rank<<" start: "<<start<<" end: "<<end<<endl;
 
         
+        if(rank==0){
+            gettimeofday (&t2, NULL);
+            
+        }
 
         for( i=start;i<end;i++){   // for rank 0, i=0 
             int * combo = new int[N+1];
-            int * maxt_comb=new int[N+1];
+            //int * maxt_comb=new int[N+1];
             // int thread_rank = omp_get_thread_num(); 
             //double * guess2=new double[N+1]; 
 
             
-            
+            if(rank==0 && i==start){
+                    gettimeofday (&combo_before, NULL);
+                }
             for (j=0;j<N+1;j++){
                 combo[j] = 0;
-                maxt_comb[j]=0;
+                //maxt_comb[j]=0;
                 // guess2[i]=guess[i];
             }
             // amrex::Print()<<__LINE__<<endl;
             //check there is more than one bucket
+
             if (nr!=1){
                 // #pragma omp parallel
-                combo=ternary(i,nr,N);    // it will work with combinations of bucket picks, which bucket pick what.
                 
+               //combo=ternary(i,nr,N);    // it will work with combinations of bucket picks, which bucket pick what.
+                int L=N;
+                int n=i;
+
+                while (n){
+                    auto dv= std::div(n,nr);
+                    n = dv.quot;
+                    int r = dv.rem;
+                    if (L==0){
+                            combo[0]=-1;
+                        break;
+                    }
+                    L--;
+                    combo[L]=r;
+                    }
                 if (combo[0]==-1) {	    
                     cout<<"Nmax too large"<<endl;
                     exit(0);
                 }
+                if(rank==0 && i==end-1){
+                gettimeofday (&combo_after, NULL);
+                long elapsedTimeMicroseconds = ((combo_after.tv_sec - combo_before.tv_sec) * 1000000L
+                                            + combo_after.tv_usec) - combo_before.tv_usec;
+                long elapsedTimeMilliseconds = elapsedTimeMicroseconds / 1000;
+
+                printf("For combo time: %ld milliseconds\n", elapsedTimeMilliseconds);
+
+            }
+
             }
             
-            double maxt=get_maxt(combo,maxt_comb,guess,N,nr);
+            
+            // double maxt=get_maxt(combo,maxt_comb,guess,N,nr);
+            // double maxt=get_maxt(combo,guess,N,nr);
+            double maxg[nr]={0};
+            double maxt=0;
+            // int thread_rank = omp_get_thread_num();
+            
+            for (int r=0;r<nr;r++){ // for every bucket
+            //    #pragma omp parallel for
+                for (int i=0;i<N;i++) { //for every element
+                    if(combo[i]==r){
+                        maxg[r]+=guess[i]; // this guess is on bucket r so add to the sum
+                    }
+                    
+                }
+                
+                
+                if (maxg[r]>maxt){
+                    maxt=maxg[r];   
+                }
+            }
+            
+             //double maxt=0;
             if(local_max<maxt)
                 {
                     local_max=maxt;
@@ -152,25 +224,51 @@ void get_all_combos(int N, int nr, double *guess, int *ranks){
             // cout<<"rank: "<<rank<<fixed<<" local_max: "<<local_max<<endl;           
             // #pragma openmp barrier
 
-
-            #pragma omp reduction( < : global_max)
-           //critical 
-            {
-                if(global_max<local_max){
-                    global_max=local_max;
-                    position=i;
-                }
-            
-            }
+        
            
             
         }
+        if(rank==0){
+            gettimeofday (&t3, NULL);
+            long elapsedTimeMicroseconds = ((t3.tv_sec - t2.tv_sec) * 1000000L
+                                        + t3.tv_usec) - t2.tv_usec;
+            long elapsedTimeMilliseconds = elapsedTimeMicroseconds / 1000;
+
+            printf("For loop parallel time: %ld milliseconds\n", elapsedTimeMilliseconds);
+
+        }
+        
          if(rank==0)
             {    cout<<"number of threads: "<<num_threads<<endl;
                 cout<<"rank: "<<rank<<fixed<<" global_max: "<<local_max<<endl;
             }
             
        }
+
+       gettimeofday (&reduction_before, NULL);
+       #pragma omp reduction( < : global_max)  
+           //critical 
+        {
+            
+        
+            if(global_max<local_max){
+                global_max=local_max;
+                position=i;
+            }
+
+            
+        //     if(rank==0){
+            
+            
+        // }
+        
+        }
+        gettimeofday (&reduction_after, NULL);
+        long elapsedTimeMicroseconds = ((reduction_after.tv_sec - reduction_before.tv_sec) * 1000000L
+                                    + reduction_after.tv_usec) - reduction_before.tv_usec;
+        long elapsedTimeMilliseconds = elapsedTimeMicroseconds / 1000;
+
+        printf("Total reduction parallel time: %ld milliseconds\n", elapsedTimeMilliseconds);
     //    #pragma omp parallel for reduction(max:global_maxima) 
     // for (int idx = i; idx < j; idx++)
     //    max_val = max_val > A[idx] ? max_val : A[idx];
@@ -214,9 +312,18 @@ void BruteForceDoIt(int nbins, int nitems, double mean, double stdev,double *gue
         ranks[i]=i;
        // myfile << ranks[i] << " ";   // write list of buckets 
     }
-    
+    struct timeval  comboCall_before,comboCall_after;
+    gettimeofday (&comboCall_before, NULL);
     // amrex::Print()<<__LINE__<<endl;
      get_all_combos(N,nr,guess,ranks);
+
+     gettimeofday (&comboCall_after, NULL);
+    long elapsedTimeMicroseconds = ((comboCall_after.tv_sec - comboCall_before.tv_sec) * 1000000L
+                                + comboCall_after.tv_usec) - comboCall_before.tv_usec;
+    long elapsedTimeMilliseconds = elapsedTimeMicroseconds / 1000;
+
+    printf("For comboCall parallel time: %ld milliseconds\n", elapsedTimeMilliseconds);
+
 
 
 }
@@ -260,15 +367,17 @@ int main( int argc, char* argv[]) {
 //         cout<<guess[i]<<" ";
 //     }
 //    cout<<endl;
+
+    
    BruteForceDoIt(nbins, nitems,mean, stdev,guess);
     // get_all_combos(N,nr,guess,ranks);  // N=total number of boxes, nr= number of buckets 
                                                 //guess=based on normal distribution 
                                                 //ranks= collection of ranks number suppose 0-63 for 64 ranks
 
     auto end_time = std::chrono::high_resolution_clock::now();
-    auto elapsed_time = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+    auto elapsed_time = std::chrono::duration_cast<std::chrono::seconds>(end_time - start_time);
 
-    cout << "Time taken: " << elapsed_time.count() << " milliseconds" << endl;
+    cout << "Time taken: " << elapsed_time.count() << " seconds" << endl;
 
     return 0;
 }

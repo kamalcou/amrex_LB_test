@@ -1,0 +1,12 @@
+Filename,buckets,boxes,KnapSackDoIt,BruteForceDoIt,SFCProcessorMapDoIt
+output6.4.txt,23677 milliseconds,,,,
+output6.256.txt,20056 milliseconds,,,,
+output6.16.txt,15594 milliseconds,,,,
+output6.2.txt,36588 milliseconds,,,,
+script.py,36588 milliseconds,,,,
+output6.1.txt,52729 milliseconds,,,,
+output.csv,52729 milliseconds,,,,
+output6.128.txt,18863 milliseconds,,,,
+output6.8.txt,15031 milliseconds,,,,
+output6.64.txt,18736 milliseconds,,,,
+output6.32.txt,17159 milliseconds,,,,

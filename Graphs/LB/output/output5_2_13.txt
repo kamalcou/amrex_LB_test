@@ -1,0 +1,99 @@
+ nr= 2 items= 13 nmax= 33554433
+number of threads: 1
+rank: 0 global_max: 2582047.207112
+Time taken: 20542 milliseconds
+ nr= 2 items= 13 nmax= 33554433
+number of threads: 2
+rank: 0 global_max: 2582047.207112
+Time taken: 13853 milliseconds
+ nr= 2 items= 13 nmax= 33554433
+number of threads: 4
+rank: 0 global_max: 2582047.207112
+Time taken: 10123 milliseconds
+ nr= 2 items= 13 nmax= 33554433
+number of threads: 8
+rank: 0 global_max: 2582047.207112
+Time taken: 10456 milliseconds
+ nr= 2 items= 13 nmax= 33554433
+number of threads: 16
+rank: 0 global_max: 2582047.207112
+Time taken: 10883 milliseconds
+ nr= 2 items= 13 nmax= 33554433
+number of threads: 32
+rank: 0 global_max: 2582047.207112
+Time taken: 12830 milliseconds
+ nr= 2 items= 13 nmax= 33554433
+number of threads: 64
+rank: 0 global_max: 2582047.207112
+Time taken: 13398 milliseconds
+ nr= 2 items= 13 nmax= 33554433
+number of threads: 128
+rank: 0 global_max: 2582047.207112
+Time taken: 13423 milliseconds
+ nr= 2 items= 13 nmax= 33554433
+number of threads: 256
+rank: 0 global_max: 2582047.207112
+Time taken: 13764 milliseconds
+ nr= 2 items= 13 nmax= 33554433
+For loop parallel time: 16474 milliseconds
+number of threads: 1
+rank: 0 global_max: 2582047.207112
+Total reduction parallel time: 0 milliseconds
+For comboCall parallel time: 16476 milliseconds
+Time taken: 16476 milliseconds
+ nr= 2 items= 13 nmax= 33554433
+For loop parallel time: 11327 milliseconds
+number of threads: 2
+rank: 0 global_max: 2582047.207112
+Total reduction parallel time: 0 milliseconds
+For comboCall parallel time: 11328 milliseconds
+Time taken: 11328 milliseconds
+ nr= 2 items= 13 nmax= 33554433
+For loop parallel time: 7775 milliseconds
+number of threads: 4
+rank: 0 global_max: 2582047.207112
+Total reduction parallel time: 0 milliseconds
+For comboCall parallel time: 7777 milliseconds
+Time taken: 7777 milliseconds
+ nr= 2 items= 13 nmax= 33554433
+For loop parallel time: 5047 milliseconds
+number of threads: 8
+rank: 0 global_max: 2582047.207112
+Total reduction parallel time: 0 milliseconds
+For comboCall parallel time: 6684 milliseconds
+Time taken: 6684 milliseconds
+ nr= 2 items= 13 nmax= 33554433
+For loop parallel time: 2931 milliseconds
+number of threads: 16
+rank: 0 global_max: 2582047.207112
+Total reduction parallel time: 0 milliseconds
+For comboCall parallel time: 7046 milliseconds
+Time taken: 7046 milliseconds
+ nr= 2 items= 13 nmax= 33554433
+For loop parallel time: 8295 milliseconds
+number of threads: 32
+rank: 0 global_max: 2582047.207112
+Total reduction parallel time: 0 milliseconds
+For comboCall parallel time: 8310 milliseconds
+Time taken: 8310 milliseconds
+ nr= 2 items= 13 nmax= 33554433
+For loop parallel time: 8804 milliseconds
+number of threads: 64
+rank: 0 global_max: 2582047.207112
+Total reduction parallel time: 0 milliseconds
+For comboCall parallel time: 8809 milliseconds
+Time taken: 8809 milliseconds
+ nr= 2 items= 13 nmax= 33554433
+For loop parallel time: 8977 milliseconds
+number of threads: 128
+rank: 0 global_max: 2582047.207112
+Total reduction parallel time: 0 milliseconds
+For comboCall parallel time: 8984 milliseconds
+Time taken: 8984 milliseconds
+ nr= 2 items= 13 nmax= 33554433
+For loop parallel time: 9206 milliseconds
+number of threads: 256
+rank: 0 global_max: 2582047.207112
+Total reduction parallel time: 0 milliseconds
+For comboCall parallel time: 9220 milliseconds
+Time taken: 9220 milliseconds

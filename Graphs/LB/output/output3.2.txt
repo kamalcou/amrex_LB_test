@@ -1,0 +1,130 @@
+ nr= 2 items= 2 nmax= 8
+number of threads: 2
+rank: 0 global_max: 392764.633637
+Elapsed time: 0 milliseconds
+Time taken: 2 milliseconds
+ nr= 2 items= 3 nmax= 32
+number of threads: 2
+rank: 0 global_max: 596284.002887
+Elapsed time: 0 milliseconds
+Time taken: 0 milliseconds
+ nr= 2 items= 4 nmax= 128
+number of threads: 2
+rank: 0 global_max: 794054.023296
+Elapsed time: 0 milliseconds
+Time taken: 0 milliseconds
+ nr= 2 items= 5 nmax= 512
+number of threads: 2
+rank: 0 global_max: 997053.819305
+Elapsed time: 0 milliseconds
+Time taken: 1 milliseconds
+ nr= 2 items= 6 nmax= 2048
+number of threads: 2
+rank: 0 global_max: 1208345.027038
+Elapsed time: 0 milliseconds
+Time taken: 1 milliseconds
+ nr= 2 items= 7 nmax= 8192
+number of threads: 2
+rank: 0 global_max: 1416506.196819
+Elapsed time: 0 milliseconds
+Time taken: 4 milliseconds
+ nr= 2 items= 8 nmax= 32768
+number of threads: 2
+rank: 0 global_max: 1614404.561476
+Elapsed time: 0 milliseconds
+Time taken: 12 milliseconds
+ nr= 2 items= 9 nmax= 131072
+number of threads: 2
+rank: 0 global_max: 1817214.548146
+Elapsed time: 0 milliseconds
+Time taken: 47 milliseconds
+ nr= 2 items= 10 nmax= 524288
+number of threads: 2
+rank: 0 global_max: 2000894.624459
+Elapsed time: 0 milliseconds
+Time taken: 193 milliseconds
+ nr= 2 items= 11 nmax= 2097152
+number of threads: 2
+rank: 0 global_max: 2195040.482161
+Elapsed time: 0 milliseconds
+Time taken: 803 milliseconds
+ nr= 2 items= 12 nmax= 8388608
+number of threads: 2
+rank: 0 global_max: 2386153.147845
+Elapsed time: 0 milliseconds
+Time taken: 3349 milliseconds
+ nr= 2 items= 13 nmax= 33554432
+number of threads: 2
+rank: 0 global_max: 2582047.207112
+Elapsed time: 0 milliseconds
+Time taken: 14033 milliseconds
+ nr= 2 items= 14 nmax= 134217728
+number of threads: 2
+rank: 0 global_max: 2778138.725685
+Elapsed time: 0 milliseconds
+Time taken: 57728 milliseconds
+ nr= 2 items= 2 nmax= 8
+number of threads: 2
+rank: 0 global_max: 392764.633637
+Elapsed time: 0 milliseconds
+Time taken: 2 milliseconds
+ nr= 2 items= 3 nmax= 32
+number of threads: 2
+rank: 0 global_max: 596284.002887
+Elapsed time: 0 milliseconds
+Time taken: 1 milliseconds
+ nr= 2 items= 4 nmax= 128
+number of threads: 2
+rank: 0 global_max: 794054.023296
+Elapsed time: 0 milliseconds
+Time taken: 0 milliseconds
+ nr= 2 items= 5 nmax= 512
+number of threads: 2
+rank: 0 global_max: 997053.819305
+Elapsed time: 0 milliseconds
+Time taken: 1 milliseconds
+ nr= 2 items= 6 nmax= 2048
+number of threads: 2
+rank: 0 global_max: 1208345.027038
+Elapsed time: 0 milliseconds
+Time taken: 1 milliseconds
+ nr= 2 items= 7 nmax= 8192
+number of threads: 2
+rank: 0 global_max: 1416506.196819
+Elapsed time: 0 milliseconds
+Time taken: 3 milliseconds
+ nr= 2 items= 8 nmax= 32768
+number of threads: 2
+rank: 0 global_max: 1614404.561476
+Elapsed time: 0 milliseconds
+Time taken: 12 milliseconds
+ nr= 2 items= 9 nmax= 131072
+number of threads: 2
+rank: 0 global_max: 1817214.548146
+Elapsed time: 0 milliseconds
+Time taken: 46 milliseconds
+ nr= 2 items= 10 nmax= 524288
+number of threads: 2
+rank: 0 global_max: 2000894.624459
+Elapsed time: 0 milliseconds
+Time taken: 194 milliseconds
+ nr= 2 items= 11 nmax= 2097152
+number of threads: 2
+rank: 0 global_max: 2195040.482161
+Elapsed time: 0 milliseconds
+Time taken: 809 milliseconds
+ nr= 2 items= 12 nmax= 8388608
+number of threads: 2
+rank: 0 global_max: 2386153.147845
+Elapsed time: 0 milliseconds
+Time taken: 3356 milliseconds
+ nr= 2 items= 13 nmax= 33554432
+number of threads: 2
+rank: 0 global_max: 2582047.207112
+Elapsed time: 0 milliseconds
+Time taken: 14078 milliseconds
+ nr= 2 items= 14 nmax= 134217728
+number of threads: 2
+rank: 0 global_max: 2778138.725685
+Elapsed time: 0 milliseconds
+Time taken: 57753 milliseconds

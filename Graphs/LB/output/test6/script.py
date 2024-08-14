@@ -90,7 +90,7 @@ no_of_buckets = 'For comboCall parallel time:'
 no_of_boxes = 'Number of boxes:'
 # Set the phrase to search for
 search_phrase3 = 'KnapSackDoIt()'
-search_phrase=['Number of buckets:','Number of boxes:','KnapSackDoIt()','BruteForceDoIt()','SFCProcessorMapDoIt()']
+search_phrase=['For comboCall parallel time:']
 # Set the output CSV file path
 output_csv_path = '/global/homes/k/kamal/amrex-tests/Graphs/LB/output/test6/output.csv'
 

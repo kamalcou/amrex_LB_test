@@ -1,0 +1,28 @@
+ nr= 2 items= 8 nmax= 32769
+number of threads: 16
+rank: 0 global_max: 1614404.561476
+Time taken: 10 milliseconds
+ nr= 2 items= 9 nmax= 131073
+number of threads: 16
+rank: 0 global_max: 1817214.548146
+Time taken: 39 milliseconds
+ nr= 2 items= 10 nmax= 524289
+number of threads: 16
+rank: 0 global_max: 2000894.624459
+Time taken: 143 milliseconds
+ nr= 2 items= 11 nmax= 2097153
+number of threads: 16
+rank: 0 global_max: 2195040.482161
+Time taken: 602 milliseconds
+ nr= 2 items= 12 nmax= 8388609
+number of threads: 16
+rank: 0 global_max: 2386153.147845
+Time taken: 2458 milliseconds
+ nr= 2 items= 13 nmax= 33554433
+number of threads: 16
+rank: 0 global_max: 2582047.207112
+Time taken: 10679 milliseconds
+ nr= 2 items= 14 nmax= 134217729
+number of threads: 16
+rank: 0 global_max: 2778138.725685
+Time taken: 45340 milliseconds

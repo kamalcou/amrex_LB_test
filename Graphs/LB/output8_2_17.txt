@@ -1,0 +1,7 @@
+ nr= 2 items= 17 nmax= 8589934593
+ nr= 2 items= 17 nmax= 8589934593
+ nr= 2 items= 17 nmax= 8589934593
+ nr= 2 items= 17 nmax= 8589934593
+ nr= 2 items= 17 nmax= 8589934593
+ nr= 2 items= 17 nmax= 8589934593
+ nr= 2 items= 17 nmax= 8589934593
