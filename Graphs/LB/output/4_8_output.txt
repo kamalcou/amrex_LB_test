@@ -1,0 +1,61 @@
+Initializing AMReX (24.05-32-g28b010126a1b)...
+AMReX (24.05-32-g28b010126a1b) initialized
+Number of buckets: 4
+Number of boxes: 32
+
+DM: KnapSackDoIt called...
+
+
+
+
+  Bucket 0 total weight: 7373881396
+  Bucket 1 total weight: 7369165492
+  Bucket 2 total weight: 7354168386
+  Bucket 3 total weight: 7334827009
+KNAPSACK efficiency: 0.9978476972
+DM: SFCProcessorMapDoIt called...
+  (nprocs, nteams, nworkers) = (4, 4, 1)
+  Bucket 0 contains 6453789929
+  Bucket 1 contains 7340294409
+  Bucket 2 contains 7408220000
+  Bucket 3 contains 8229737945
+SFC efficiency: 0.8940759256
+  Bucket 3 contains 7475918015
+  Bucket 0 contains 7417439117
+  Bucket 1 contains 7320109795
+  Bucket 2 contains 7218575356
+SFC+painterPartition efficiency: 0.9842283658
+
+
+TinyProfiler total time across processes [min...avg...max]: 0.005576 ... 0.005576 ... 0.005576
+
+----------------------------------------------------------------------
+Name                   NCalls  Excl. Min  Excl. Avg  Excl. Max   Max %
+----------------------------------------------------------------------
+KnapSackDoIt()              1   0.001934   0.001934   0.001934  34.69%
+main                        1   0.001353   0.001353   0.001353  24.26%
+SFCProcessorMapDoIt()       1   0.001317   0.001317   0.001317  23.62%
+painterPartition()          1  0.0009473  0.0009473  0.0009473  16.99%
+knapsack()                  1  7.294e-06  7.294e-06  7.294e-06   0.13%
+Distribute()                1  1.332e-06  1.332e-06  1.332e-06   0.02%
+----------------------------------------------------------------------
+
+----------------------------------------------------------------------
+Name                   NCalls  Incl. Min  Incl. Avg  Incl. Max   Max %
+----------------------------------------------------------------------
+main                        1    0.00556    0.00556    0.00556  99.72%
+KnapSackDoIt()              1   0.001942   0.001942   0.001942  34.82%
+SFCProcessorMapDoIt()       1   0.001319   0.001319   0.001319  23.65%
+painterPartition()          1  0.0009473  0.0009473  0.0009473  16.99%
+knapsack()                  1  7.294e-06  7.294e-06  7.294e-06   0.13%
+Distribute()                1  1.332e-06  1.332e-06  1.332e-06   0.02%
+----------------------------------------------------------------------
+
+Pinned Memory Usage:
+-----------------------------------------------------------------
+Name                            Nalloc  Nfree    AvgMem    MaxMem
+-----------------------------------------------------------------
+The_Pinned_Arena::Initialize()       1      1  1233 KiB  8192 KiB
+-----------------------------------------------------------------
+
+AMReX (24.05-32-g28b010126a1b) finalized

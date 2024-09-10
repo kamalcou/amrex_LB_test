@@ -8,11 +8,14 @@
 #include <cstring>  // For std::strcpy
 //#include <AMReX_Graph.H>
 #include <omp.h>
+#include <time.h>
+
 
 #include <Util.H>
 #include <Knapsack.H>
 #include <SFC.H>
 #include<BruteForce.H>
+#include<painterPartition.H>
 //#include <CommObjs.H>
 
 #if defined(AMREX_USE_MPI) || defined(AMREX_USE_GPU)
@@ -57,9 +60,9 @@ void main_main ()
         pp.query("name", name);
         pp.query("scaling", scaling);
     }
-
-
-//    amrex::ResetRandomSeed(27182182459045);
+    
+    srand(time(NULL));
+    amrex::ResetRandomSeed(rand());
 
 // ***************************************************************
 
@@ -90,6 +93,7 @@ void main_main ()
     int nmax = std::numeric_limits<int>::max();
     Real k_eff = 0.0;
     Real s_eff = 0.0;
+    Real s_painter_eff=0.0;
     Real target_eff = 0.9;
 
    
@@ -120,13 +124,18 @@ void main_main ()
     Real stdev = 4523;
     for (int i=0; i<nitems; ++i) {
         wgts[i] = amrex::RandomNormal(mean, stdev);
-        amrex::Print()<<wgts[i]<<" , ";
+        // amrex::Print()<<wgts[i]<<" , ";
        // guess[i] = amrex::RandomNormal(mean, stdev);
     }
     amrex::Print()<<std::endl;
     // Scale weights and convert to Long for algorithms.
     std::vector<Long> scaled_wgts = scale_wgts(wgts);
-
+    // amrex::Print()<<" Scaled Weights: ";
+    // for (int i=0; i<nitems; ++i) {
+        
+    //     amrex::Print()<<scaled_wgts[i]<<" , ";
+       
+    // }
     //generate array of guesses with normal distribution
     std::default_random_engine generator;
     std::normal_distribution<double> distribution(mean,stdev);
@@ -146,7 +155,7 @@ void main_main ()
     std::vector<int> k_dmap = KnapSackDoIt(scaled_wgts, nbins, k_eff, true, nmax, true, false, bytes);
     std::vector<int> s_dmap = SFCProcessorMapDoIt(ba, scaled_wgts, nbins, &s_eff, node_size, true, false, bytes);
    // std::vector<int> bruteForce_dmap = BruteForceDoIt(guess, nbins, k_eff, true, nmax, true, false, bytes);
-    
+    std::vector< std::vector<int> > vec=painterPartition(scaled_wgts,nbins);
     
     // BruteForceDoIt(nbins,nitems,mean,stdev,wgts.data());
     

@@ -7,6 +7,9 @@
 #include <SFC.H>
 #include <Knapsack.H>
 #include <LeastUsed.H>
+#include<painterPartition.H>
+
+#define DpainterPartition  1
 
 #if 0
 AMREX_FORCE_INLINE
@@ -243,6 +246,25 @@ SFCProcessorMapDoIt (const amrex::BoxArray&          boxes,
     std::vector< std::vector<int> > vec(nteams);
 
     Distribute(tokens,wgts,nteams,volperteam,vec);
+    
+    // amrex::Print() <<"volperteam= "<<volperteam<< std::endl;
+    // //amrex::Print() <<"nteams= "<<nteams<<" boxes= "<< vec[0].size()<< std::endl;
+    // for(int i=0;i<nteams;i++){
+    // amrex::Print() <<" bucket["<<i<<"]= "<< vec[i].size()<< std::endl;
+
+    // }
+    // for(int i=0;i<nprocs;i++){
+    //     for(int j=0;j<vec[i].size();j++){
+    //     amrex::Print() <<"vec[i][j]=("<<i<<", "<<j<<")= "<< vec[i][j]<< std::endl;
+    //     }
+    // }
+    
+    // for(int i=0;i<wgts.size();i++){
+    //     amrex::Print() <<wgts[i]<< std::endl;
+    // }
+            
+   
+    //vec=painterPartition(wgts,nteams);
 
     // vec has a size of nteams and vec[] holds a vector of box ids.
 
@@ -251,16 +273,19 @@ SFCProcessorMapDoIt (const amrex::BoxArray&          boxes,
     std::vector<LIpair> LIpairV;
 
     LIpairV.reserve(nteams);
-
+    
     for (int i = 0; i < nteams; ++i)
     {
         amrex::Long wgt = 0;
         const std::vector<int>& vi = vec[i];
         for (int j = 0, M = vi.size(); j < M; ++j)
-            wgt += wgts[vi[j]];
+            {   
+                // amrex::Print()<<"vi["<<j<<"]="<<vi[j]<<endl;
+                wgt += wgts[vi[j]];}
 
         LIpairV.push_back(LIpair(wgt,i));
     }
+    
 
     if (sort) Sort(LIpairV, true);
 
@@ -317,7 +342,8 @@ SFCProcessorMapDoIt (const amrex::BoxArray&          boxes,
         if (nteams == nprocs) { // In this case, team id is process id.
             for (int j = 0; j < Nbx; ++j)
             {
-                result[vi[j]] = amrex::ParallelContext::local_to_global_rank(tid);
+                result[vi[j]]=tid;
+                // result[vi[j]] = amrex::ParallelContext::local_to_global_rank(tid);
 //                m_ref->m_pmap[vi[j]] = amrex::ParallelContext::local_to_global_rank(tid);
             }
         }
@@ -380,9 +406,45 @@ SFCProcessorMapDoIt (const amrex::BoxArray&          boxes,
 
         if (flag_verbose_mapper)
         {
+
+            //amrex::Print()<<__LINE__<<std::endl;
             amrex::Print() << "SFC efficiency: " << efficiency << '\n';
         }
     }
+    //  #ifdef DpainterPartition
+    //         std::vector< std::vector<int> > vec1(nteams);
+    //         vec1=painterPartition(wgts,nteams);
+    //         amrex::Print()<<"After painterPartition:\n";
+    //         for(int i=0;i<nteams;i++){
+    //             amrex::Print() <<" bucket["<<i<<"]= "<< vec1[i].size()<< std::endl;
+    //         }
+    //         for(int i=0;i<nprocs;i++){
+    //             for(int j=0;j<vec1[i].size();j++){
+    //             amrex::Print() <<"vec[i][j]=("<<i<<", "<<j<<")= "<< vec1[i][j]<< std::endl;
+    //             }
+    //         }
+    //         amrex::Print()<<wgts.size()<<std::endl;
+    //         for(int i=0;i<wgts.size();i++){
+    //             amrex::Print() <<wgts[i]<< std::endl;
+    //         }
+
+    //         LIpairV.reserve(nteams);
+    
+    //         for (int i = 0; i < nteams; ++i)
+    //         {   amrex::Print()<<"i="<<i<<std::endl;
+    //             amrex::Long wgt = 0;
+    //             const std::vector<int>& vi = vec1[i];
+    //             for (int j = 0, M = vi.size(); j < M; ++j)
+    //                 {
+    //                 wgt += wgts[vi[j]];
+    //                 }
+    //             LIpairV.push_back(LIpair(wgt,i));
+    //         }
+            
+
+    //         if (sort) Sort(LIpairV, true);
+
+    //     #endif
 
     return result;
 }

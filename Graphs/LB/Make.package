@@ -1,2 +1,2 @@
-CEXE_headers += Knapsack.H SFC.H LeastUsed.H Util.H CommObjs.H 
-CEXE_sources += main.cpp Knapsack.cpp SFC.cpp LeastUsed.cpp CommObjs.cpp 
+CEXE_headers += Knapsack.H SFC.H LeastUsed.H Util.H CommObjs.H painterPartition.h
+CEXE_sources += main.cpp Knapsack.cpp SFC.cpp LeastUsed.cpp CommObjs.cpp painterPartition.cpp

@@ -1,0 +1,109 @@
+Initializing AMReX (24.05-32-g28b010126a1b)...
+AMReX (24.05-32-g28b010126a1b) initialized
+Number of buckets: 16
+Number of boxes: 256
+
+DM: KnapSackDoIt called...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Bucket 0 total weight: 14478379124
+  Bucket 1 total weight: 14477862109
+  Bucket 2 total weight: 14476803596
+  Bucket 3 total weight: 14476558690
+  Bucket 4 total weight: 14475682473
+  Bucket 5 total weight: 14472810625
+  Bucket 6 total weight: 14471130539
+  Bucket 7 total weight: 14470403739
+  Bucket 8 total weight: 14468529620
+  Bucket 9 total weight: 14467242784
+  Bucket 10 total weight: 14465803183
+  Bucket 11 total weight: 14465564103
+  Bucket 12 total weight: 14462163614
+  Bucket 13 total weight: 14459771051
+  Bucket 14 total weight: 14458881403
+  Bucket 15 total weight: 14458070849
+KNAPSACK efficiency: 0.999359353
+DM: SFCProcessorMapDoIt called...
+  (nprocs, nteams, nworkers) = (16, 16, 1)
+  Bucket 0 contains 14237868622
+  Bucket 1 contains 14131326484
+  Bucket 2 contains 14392785384
+  Bucket 3 contains 14606598725
+  Bucket 4 contains 14292817536
+  Bucket 5 contains 14420941679
+  Bucket 6 contains 14686028901
+  Bucket 7 contains 14386395260
+  Bucket 8 contains 14935766718
+  Bucket 9 contains 14208356437
+  Bucket 10 contains 14325549086
+  Bucket 11 contains 14680213815
+  Bucket 12 contains 14752475174
+  Bucket 13 contains 13730514847
+  Bucket 14 contains 14475666715
+  Bucket 15 contains 15242352119
+SFC efficiency: 0.9492697374
+  Bucket 11 contains 14710671388
+  Bucket 15 contains 14676258730
+  Bucket 10 contains 14648633666
+  Bucket 12 contains 14647023315
+  Bucket 8 contains 14612682138
+  Bucket 3 contains 14585222831
+  Bucket 9 contains 14562677984
+  Bucket 0 contains 14435797583
+  Bucket 7 contains 14422016116
+  Bucket 4 contains 14413768231
+  Bucket 1 contains 14393623606
+  Bucket 5 contains 14385320823
+  Bucket 6 contains 14324156978
+  Bucket 13 contains 14251400753
+  Bucket 14 contains 14241546937
+  Bucket 2 contains 14194856423
+SFC+painterPartition efficiency: 0.9835787377
+
+
+TinyProfiler total time across processes [min...avg...max]: 0.05634 ... 0.05634 ... 0.05634
+
+----------------------------------------------------------------------
+Name                   NCalls  Excl. Min  Excl. Avg  Excl. Max   Max %
+----------------------------------------------------------------------
+painterPartition()          1    0.03221    0.03221    0.03221  57.17%
+KnapSackDoIt()              1    0.01292    0.01292    0.01292  22.93%
+SFCProcessorMapDoIt()       1   0.008376   0.008376   0.008376  14.87%
+main                        1   0.002781   0.002781   0.002781   4.94%
+knapsack()                  1  3.459e-05  3.459e-05  3.459e-05   0.06%
+Distribute()                1  3.848e-06  3.848e-06  3.848e-06   0.01%
+----------------------------------------------------------------------
+
+----------------------------------------------------------------------
+Name                   NCalls  Incl. Min  Incl. Avg  Incl. Max   Max %
+----------------------------------------------------------------------
+main                        1    0.05632    0.05632    0.05632  99.97%
+painterPartition()          1    0.03221    0.03221    0.03221  57.17%
+KnapSackDoIt()              1    0.01295    0.01295    0.01295  22.99%
+SFCProcessorMapDoIt()       1   0.008379   0.008379   0.008379  14.87%
+knapsack()                  1  3.459e-05  3.459e-05  3.459e-05   0.06%
+Distribute()                1  3.848e-06  3.848e-06  3.848e-06   0.01%
+----------------------------------------------------------------------
+
+Pinned Memory Usage:
+----------------------------------------------------------------
+Name                            Nalloc  Nfree   AvgMem    MaxMem
+----------------------------------------------------------------
+The_Pinned_Arena::Initialize()       1      1  127 KiB  8192 KiB
+----------------------------------------------------------------
+
+AMReX (24.05-32-g28b010126a1b) finalized
