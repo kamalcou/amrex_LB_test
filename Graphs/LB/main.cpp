@@ -124,18 +124,18 @@ void main_main ()
     Real stdev = 4523;
     for (int i=0; i<nitems; ++i) {
         wgts[i] = amrex::RandomNormal(mean, stdev);
-        // amrex::Print()<<wgts[i]<<" , ";
+        amrex::Print()<<wgts[i]<<" , ";
        // guess[i] = amrex::RandomNormal(mean, stdev);
     }
     amrex::Print()<<std::endl;
     // Scale weights and convert to Long for algorithms.
     std::vector<Long> scaled_wgts = scale_wgts(wgts);
-    // amrex::Print()<<" Scaled Weights: ";
-    // for (int i=0; i<nitems; ++i) {
+    amrex::Print()<<" Scaled Weights: ";
+    for (int i=0; i<nitems; ++i) {
         
-    //     amrex::Print()<<scaled_wgts[i]<<" , ";
+        amrex::Print()<<scaled_wgts[i]<<" , ";
        
-    // }
+    }
     //generate array of guesses with normal distribution
     std::default_random_engine generator;
     std::normal_distribution<double> distribution(mean,stdev);

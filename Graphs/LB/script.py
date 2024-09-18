@@ -17,7 +17,7 @@ def search_values_in_files(directory, search_phrase, output_csv):
                 for line in lines:
                     for search_word in search_phrase:
                         if search_word in line:
-                            if(no_of_buckets==search_word):
+                            if(SFC_efficiency==search_word):
                                 buckets = line.split(search_word)[-1].strip()
                             if(no_of_boxes==search_word):
                                 boxes = line.split(search_word)[-1].strip()
@@ -79,20 +79,21 @@ def search_values_in_files(directory, search_phrase, output_csv):
     # Write results to a CSV file
     with open(output_csv, 'w') as csvfile:
         csv_writer = csv.writer(csvfile)
-        csv_writer.writerow(['Filename', 'buckets','boxes','KnapSackDoIt','BruteForceDoIt','SFCProcessorMapDoIt'])
+        csv_writer.writerow(['Nbins',	'boxes',	'Knapsack'	,'SFC'	,'painter'	,'KnapSackDoIt()', 	'SFCProcessorMapDoIt()'	,'painterPartition()'])
+        print(results)
         csv_writer.writerows(results)
 
 # Set the directory containing the text files
-directory_path = '/global/homes/k/kamal/amrex-tests/Graphs/LB/output/test6'
+directory_path = '/global/homes/k/kamal/amrex-tests/Graphs/LB/output/'
 # Set the phrase to search for
-no_of_buckets = 'For comboCall parallel time:'
+SFC_efficiency = 'SFC efficiency:'
 # Set the phrase to search for
 no_of_boxes = 'Number of boxes:'
 # Set the phrase to search for
-search_phrase3 = 'KnapSackDoIt()'
-search_phrase=['Number of buckets:','Number of boxes:','KnapSackDoIt()','BruteForceDoIt()','SFCProcessorMapDoIt()']
+KnapSackDoIt = 'KnapSackDoIt()'
+search_phrase=['Nbins',	'boxes',	'Knapsack'	,'SFC'	,'painter'	,'KnapSackDoIt()', 	'SFCProcessorMapDoIt()'	,'painterPartition()']
 # Set the output CSV file path
-output_csv_path = '/global/homes/k/kamal/amrex-tests/Graphs/LB/output/test6/output.csv'
+output_csv_path = '/global/homes/k/kamal/amrex-tests/Graphs/LB/output/output.csv'
 
 # Call the function
 search_values_in_files(directory_path, search_phrase,  output_csv_path)

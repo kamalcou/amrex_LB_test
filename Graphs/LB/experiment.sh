@@ -41,7 +41,7 @@
 #                             echo "boxes=$boxes"
 #                             echo "max_grid_size=$max_grid_size"
 #                             # echo  "grid_size=$grid_size"
-#                             cmd='./main3d.gnu.x86-milan.TPROF.ex inputs  nbins='$nbins' domain="('$domain_size_x,$domain_size_y,$domain_size_z')" max_grid_size="('$i,$j,$k')" >output/'$nbins'_'$boxes'_domain_size=('$domain_size_x','$domain_size_y','$domain_size_z') max_grid_size=('$i','$j','$k')__output.txt'
+#                             cmd='./main3d.gnu.x86-milan.TPROF.ex inputs  nbins='$nbins' domain="('$domain_size_x,$domain_size_y,$domain_size_z')" max_grid_size="('$i,$j,$k')" >output/'$nbins'_'$boxes'_domain_size=('$domain_size_x','$domain_size_y','$domain_size_z') max_grid_size=('$i','$j','$k')__output.$SLURM_JOBID.txt'
 #                             echo $cmd
 #                             # eval $cmd
 #                         done
@@ -53,16 +53,16 @@
 #     done
 # done
 # ./main3d.gnu.x86-milan.TPROF.OMP.ex inputs 
-# ./main3d.gnu.x86-milan.TPROF.ex inputs  nbins=2 max_grid_size="(128,128,128)" >output/2_8_output.txt
+# ./main3d.gnu.x86-milan.TPROF.ex inputs  nbins=2 max_grid_size="(128,128,128)" >output/2_8_output.$SLURM_JOBID.txt
 # ./main3d.gnu.x86-milan.TPROF.ex inputs  nbins=2 max_grid_size="(128,128,64)" >output/2_16_output_.$SLURM_JOBID.txt
-# # ./main3d.gnu.x86-milan.TPROF.ex inputs  nbins=2 max_grid_size="(128,64,64)" >output/2_32_output.txt
+# # ./main3d.gnu.x86-milan.TPROF.ex inputs  nbins=2 max_grid_size="(128,64,64)" >output/2_32_output.$SLURM_JOBID.txt
 # ./main3d.gnu.x86-milan.TPROF.ex inputs  nbins=2 max_grid_size="(64,64,64)" >output/2_64_output_.$SLURM_JOBID.txt
-# # ./main3d.gnu.x86-milan.TPROF.ex inputs  nbins=2 max_grid_size="(64,64,32)" >output/2_128_output.txt
-# # ./main3d.gnu.x86-milan.TPROF.ex inputs  nbins=2 max_grid_size="(64,32,32)" >output/2_256_output.txt
-# # ./main3d.gnu.x86-milan.TPROF.ex inputs  nbins=2 max_grid_size="(32,32,32)" >output/2_512_output.txt
-# # ./main3d.gnu.x86-milan.TPROF.ex inputs  nbins=2 max_grid_size="(32,32,16)" >output/2_1024_output.txt
-# # ./main3d.gnu.x86-milan.TPROF.ex inputs  nbins=2 max_grid_size="(32,16,16)" >output/2_2048_output.txt
-# #  ./main3d.gnu.x86-milan.TPROF.OMP.ex inputs  nbins=2 max_grid_size="(16,16,16)" >output/2_4096_output.txt
+# # ./main3d.gnu.x86-milan.TPROF.ex inputs  nbins=2 max_grid_size="(64,64,32)" >output/2_128_output.$SLURM_JOBID.txt
+# # ./main3d.gnu.x86-milan.TPROF.ex inputs  nbins=2 max_grid_size="(64,32,32)" >output/2_256_output.$SLURM_JOBID.txt
+# # ./main3d.gnu.x86-milan.TPROF.ex inputs  nbins=2 max_grid_size="(32,32,32)" >output/2_512_output.$SLURM_JOBID.txt
+# # ./main3d.gnu.x86-milan.TPROF.ex inputs  nbins=2 max_grid_size="(32,32,16)" >output/2_1024_output.$SLURM_JOBID.txt
+# # ./main3d.gnu.x86-milan.TPROF.ex inputs  nbins=2 max_grid_size="(32,16,16)" >output/2_2048_output.$SLURM_JOBID.txt
+# #  ./main3d.gnu.x86-milan.TPROF.OMP.ex inputs  nbins=2 max_grid_size="(16,16,16)" >output/2_4096_output.$SLURM_JOBID.txt
 
 # ./main3d.gnu.x86-milan.TPROF.ex inputs  nbins=128 max_grid_size="(128,128,64)"
 
@@ -73,20 +73,26 @@
 #max_grid_size=
 
 
-./main3d.gnu.x86-milan.TPROF.ex inputs nbins=2 domain="(256,256,256)" max_grid_size="(128,128,128)" >output/2_4_output.txt
-./main3d.gnu.x86-milan.TPROF.ex inputs nbins=2 domain="(256,256,256)" max_grid_size="(128,128,64)" >output/2_8_output.txt
-./main3d.gnu.x86-milan.TPROF.ex inputs nbins=2 domain="(256,256,256)" max_grid_size="(128,64,64)" >output/2_16_output.txt
-./main3d.gnu.x86-milan.TPROF.ex inputs nbins=4 domain="(256,256,256)" max_grid_size="(128,128,64)" >output/4_4_output.txt
-./main3d.gnu.x86-milan.TPROF.ex inputs nbins=4 domain="(256,256,256)" max_grid_size="(128,64,64)" >output/4_8_output.txt
-./main3d.gnu.x86-milan.TPROF.ex inputs nbins=4 domain="(256,256,256)" max_grid_size="(64,64,64)" >output/4_16_output.txt
-./main3d.gnu.x86-milan.TPROF.ex inputs nbins=8 domain="(256,256,256)" max_grid_size="(64,64,64)" >output/8_4_output.txt
-./main3d.gnu.x86-milan.TPROF.ex inputs nbins=8 domain="(256,256,256)" max_grid_size="(64,64,32)" >output/8_8_output.txt
-./main3d.gnu.x86-milan.TPROF.ex inputs nbins=8 domain="(256,256,256)" max_grid_size="(64,32,32)" >output/8_16_output.txt
-./main3d.gnu.x86-milan.TPROF.ex inputs nbins=16 domain="(256,256,256)" max_grid_size="(64,64,32)" >output/16_4_output.txt
-./main3d.gnu.x86-milan.TPROF.ex inputs nbins=16 domain="(256,256,256)" max_grid_size="(64,32,32)" >output/16_8_output.txt
-./main3d.gnu.x86-milan.TPROF.ex inputs nbins=16 domain="(256,256,256)" max_grid_size="(32,32,32)" >output/16_16_output.txt
-./main3d.gnu.x86-milan.TPROF.ex inputs nbins=32 domain="(256,256,256)" max_grid_size="(64,64,32)" >output/32_4_output.txt
-./main3d.gnu.x86-milan.TPROF.ex inputs nbins=32 domain="(256,256,256)" max_grid_size="(64,32,32)" >output/32_8_output.txt
-./main3d.gnu.x86-milan.TPROF.ex inputs nbins=32 domain="(256,256,256)" max_grid_size="(32,32,32)" >output/32_16_output.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=2 domain="(256,256,256)" max_grid_size="(128,128,128)" >output/2_4_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=2 domain="(256,256,256)" max_grid_size="(128,128,64)" >output/2_8_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=2 domain="(256,256,256)" max_grid_size="(128,64,64)" >output/2_16_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=4 domain="(256,256,256)" max_grid_size="(128,128,64)" >output/4_4_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=4 domain="(256,256,256)" max_grid_size="(128,64,64)" >output/4_8_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=4 domain="(256,256,256)" max_grid_size="(64,64,64)" >output/4_16_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=8 domain="(256,256,256)" max_grid_size="(64,64,64)" >output/8_4_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=8 domain="(256,256,256)" max_grid_size="(64,64,32)" >output/8_8_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=8 domain="(256,256,256)" max_grid_size="(64,32,32)" >output/8_16_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=16 domain="(256,256,256)" max_grid_size="(64,64,32)" >output/16_4_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=16 domain="(256,256,256)" max_grid_size="(64,32,32)" >output/16_8_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=16 domain="(256,256,256)" max_grid_size="(32,32,32)" >output/16_16_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=32 domain="(256,256,256)" max_grid_size="(64,64,32)" >output/32_4_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=32 domain="(256,256,256)" max_grid_size="(64,32,32)" >output/32_8_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=32 domain="(256,256,256)" max_grid_size="(32,32,32)" >output/32_16_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=64 domain="(256,256,256)" max_grid_size="(64,64,32)" >output/64_4_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=64 domain="(256,256,256)" max_grid_size="(64,32,32)" >output/64_8_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=64 domain="(256,256,256)" max_grid_size="(32,32,32)" >output/64_16_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=128 domain="(256,256,256)" max_grid_size="(64,64,32)" >output/128_4_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=128 domain="(256,256,256)" max_grid_size="(64,32,32)" >output/128_8_output.$SLURM_JOBID.txt
+./main3d.gnu.x86-milan.TPROF.ex inputs nbins=128 domain="(256,256,256)" max_grid_size="(32,32,32)" >output/128_16_output.$SLURM_JOBID.txt
 
 
