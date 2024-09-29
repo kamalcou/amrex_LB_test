@@ -51,13 +51,56 @@ long  findMax(vector<long> arr, int n, int k)
 	return dp[k][n]; 
 } 
 
+bool isPartitionPossible(int arr[], int n, int k, long long maxTime){
+        
+        long long currTime=0, worker=1;
+        for(int i=0;i<n;i++)
+        {
+            if(currTime+arr[i]>maxTime){
+                worker++;
+                
+                if(worker>k) return false;
+                currTime=arr[i];
+            }
+            else currTime+=arr[i];
+        }
+        return true;
+        
+    }
+    long long minTime(int arr[], int n, int k)
+    {
+        // code here
+        // return minimum time
+        long long sum=0,max=arr[0];
+       // if(k>n) return -1;
+        for(int i=0;i<n;i++){
+            sum+=arr[i];
+            if(max<arr[i]){
+                max=arr[i];
+            }
+        }
+        long long h=sum,l=max,mid,res;
+        while(l<=h){
+            mid=l+(h-l)/2;
+            if(isPartitionPossible(arr,n,k,mid)){
+                res=mid;
+                h=mid-1;
+            }
+            else{
+                l=mid+1;
+            }
+        }
+        return res;
+        
+    }
+
 // driver function 
 int  main() 
 { 
 	long  a[] = {909990672,1000000001,944067182,869552438,969416923,836439888,970584008,934893898 }; 
 	 //long int arr[] = { 90,10,94,86,96,83,97,93 }; 
-	//long int arr[] = { 10, 20, 60, 50, 30, 40 };
-	//long int arr[] = { 10, 40, 20, 30, 40, 50 };
+	//long long a[] = { 10, 20, 60, 50, 30, 40 };
+	//long int a[] = { 10, 40, 20, 30, 40, 50 };
 	int n = sizeof(a) / sizeof(a[0]); 
 	vector<long> arr;
 	arr.assign(a,a+n);
