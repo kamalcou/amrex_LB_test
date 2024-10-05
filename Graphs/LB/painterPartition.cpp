@@ -59,6 +59,48 @@ long  findMax(vector<long> arr, int n, int k)
 	 
 	return dp[k][n]; 
 } 
+bool isPartitionPossible(vector<long> arr, int n, int k, long maxTime){
+        
+        long long currTime=0, worker=1;
+        for(int i=0;i<n;i++)
+        {
+            if(currTime+arr[i]>maxTime){
+                worker++;
+                
+                if(worker>k) return false;
+                currTime=arr[i];
+            }
+            else currTime+=arr[i];
+        }
+        return true;
+        
+    }
+long minTime(vector<long> arr, int n, int k)
+    {
+        // code here
+        // return minimum time
+        long long sum=0,max=arr[0];
+       // if(k>n) return -1;
+        for(int i=0;i<n;i++){
+            sum+=arr[i];
+            if(max<arr[i]){
+                max=arr[i];
+            }
+        }
+        long long h=sum,l=max,mid,res;
+        while(l<=h){
+            mid=l+(h-l)/2;
+            if(isPartitionPossible(arr,n,k,mid)){
+                res=mid;
+                h=mid-1;
+            }
+            else{
+                l=mid+1;
+            }
+        }
+        return res;
+        
+    }
 
 // driver function 
 vector< vector<int> > painterPartition(vector<long> arr,int k) 
@@ -72,7 +114,7 @@ vector< vector<int> > painterPartition(vector<long> arr,int k)
 	// int n = sizeof(arr) / sizeof(arr[0]); 
 	long int n=arr.size();
 	//int k = 2; 
-	long maxVal=findMax(arr,n,k);
+	long maxVal=minTime(arr,n,k);
 	//cout << maxVal << endl; 
 	vector< vector<int> > vec(k);
 	int index;

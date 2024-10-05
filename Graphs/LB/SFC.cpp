@@ -7,7 +7,7 @@
 #include <SFC.H>
 #include <Knapsack.H>
 #include <LeastUsed.H>
-#include<painterPartition.H>
+//#include<painterPartition.H>
 
 #define DpainterPartition  1
 

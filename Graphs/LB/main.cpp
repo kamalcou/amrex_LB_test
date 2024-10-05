@@ -61,7 +61,7 @@ void main_main ()
         pp.query("scaling", scaling);
     }
     
-    srand(time(NULL));
+    //srand(time(NULL));
     amrex::ResetRandomSeed(rand());
 
 // ***************************************************************
@@ -121,7 +121,8 @@ void main_main ()
     //std::vector<Long> guess(nitems);
 
     Real mean = 100000;  /// We need to have read from file
-    Real stdev = 4523;
+   // Real stdev = 4523;
+    Real stdev = 25231; //for worst case 
     for (int i=0; i<nitems; ++i) {
         wgts[i] = amrex::RandomNormal(mean, stdev);
         amrex::Print()<<wgts[i]<<" , ";

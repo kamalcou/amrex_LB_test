@@ -1,0 +1,557 @@
+Initializing AMReX (24.05-32-g28b010126a1b)...
+AMReX (24.05-32-g28b010126a1b) initialized
+Number of buckets: 128
+Number of boxes: 128
+113545.6438 , 70573.15379 , 104253.9291 , 69891.40891 , 119634.3308 , 88776.54712 , 113389.5644 , 125302.3833 , 108419.1741 , 76085.3741 , 70060.15784 , 116305.5767 , 66371.01749 , 82771.42463 , 105886.3602 , 146654.1672 , 101612.3569 , 102089.9675 , 104342.9738 , 116418.685 , 96555.95086 , 90741.83503 , 87716.23568 , 92547.97106 , 121966.4681 , 121167.426 , 78372.3861 , 71651.37971 , 96254.86296 , 63477.23491 , 96772.28701 , 67733.65115 , 120555.2336 , 144287.9483 , 126752.9532 , 96824.34328 , 110148.1911 , 69643.75993 , 106012.6123 , 94419.34798 , 127087.4577 , 49250.46498 , 106561.8211 , 93662.03394 , 70991.70281 , 94156.57193 , 71931.37605 , 93114.38051 , 107165.912 , 97668.94007 , 106399.8044 , 118518.4575 , 131349.6445 , 131913.1488 , 79519.44006 , 88788.3583 , 115165.8908 , 76259.13488 , 74193.16768 , 95606.8877 , 112668.5324 , 103247.2074 , 96913.03171 , 161570.7263 , 88369.24995 , 102866.9697 , 143694.4541 , 59582.96883 , 94972.17938 , 134858.9843 , 96840.36771 , 138536.3148 , 122998.1924 , 88702.46305 , 109028.1532 , 105617.5158 , 95460.35569 , 74293.18274 , 90690.83053 , 144927.1006 , 96546.36098 , 116310.5324 , 71085.76173 , 134138.0412 , 115885.5361 , 125308.3004 , 91500.66949 , 61407.34042 , 138387.2151 , 53462.22359 , 143240.6287 , 140338.2387 , 83370.59373 , 89640.36305 , 64910.4719 , 108147.7201 , 98572.99942 , 88022.40734 , 99535.8016 , 105393.0248 , 109486.4856 , 52637.18062 , 124527.5866 , 60461.97311 , 104977.213 , 120927.0622 , 105784.4376 , 147185.4439 , 87882.84642 , 102777.3919 , 136525.8234 , 114806.5804 , 116837.4962 , 81206.06032 , 109480.8425 , 45450.45859 , 117649.273 , 73480.96538 , 32465.70294 , 90735.62402 , 109379.268 , 102437.0959 , 78304.54598 , 61317.18502 , 97528.08349 , 55288.71151 , 110920.7691 , 108224.1213 , 
+ Scaled Weights: 702761239 , 436794186 , 645252587 , 432574703 , 740445585 , 549459356 , 701795227 , 775526522 , 671032288 , 470910640 , 433619131 , 719843126 , 410786156 , 512292212 , 655356095 , 907677837 , 628903263 , 631859309 , 645803706 , 720543181 , 597607953 , 561622994 , 542896834 , 572801604 , 754879742 , 749934279 , 485065506 , 443467585 , 595744447 , 392875841 , 598946909 , 419219823 , 746145273 , 893032740 , 784504447 , 599269098 , 681733589 , 431041944 , 656137500 , 584384005 , 786574776 , 304822948 , 659536685 , 579696806 , 439384686 , 582757621 , 445200549 , 576307248 , 663275548 , 604496510 , 658533924 , 733539177 , 812954473 , 816442136 , 492164899 , 549532458 , 712789337 , 471986087 , 459199321 , 591733973 , 697332587 , 639021745 , 599818012 , 1000000001 , 546938496 , 636668363 , 889359461 , 368773294 , 587805611 , 834674619 , 599368277 , 857434500 , 761265331 , 549000832 , 674801406 , 653692153 , 590827051 , 459818338 , 561307315 , 896988607 , 597548598 , 719873798 , 439966839 , 830212529 , 717243395 , 775563144 , 566319603 , 380064767 , 856511686 , 330890533 , 886550627 , 868587039 , 516000613 , 554805720 , 401746489 , 669352194 , 610091950 , 544791804 , 616050964 , 652302724 , 677638135 , 325784144 , 770731119 , 374213662 , 649729165 , 748446610 , 654725271 , 910966036 , 543928028 , 636113944 , 844991086 , 710565479 , 723135304 , 502603796 , 677603209 , 281303796 , 728159586 , 454791330 , 200938027 , 561584553 , 676974540 , 634007771 , 484645628 , 379506774 , 603624715 , 342195105 , 686515260 , 669825060 , DM: KnapSackDoIt called...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Bucket 0 total weight: 1000000001
+  Bucket 1 total weight: 910966036
+  Bucket 2 total weight: 907677837
+  Bucket 3 total weight: 896988607
+  Bucket 4 total weight: 893032740
+  Bucket 5 total weight: 889359461
+  Bucket 6 total weight: 886550627
+  Bucket 7 total weight: 868587039
+  Bucket 8 total weight: 857434500
+  Bucket 9 total weight: 856511686
+  Bucket 10 total weight: 844991086
+  Bucket 11 total weight: 834674619
+  Bucket 12 total weight: 830212529
+  Bucket 13 total weight: 816442136
+  Bucket 14 total weight: 812954473
+  Bucket 15 total weight: 786574776
+  Bucket 16 total weight: 784504447
+  Bucket 17 total weight: 775563144
+  Bucket 18 total weight: 775526522
+  Bucket 19 total weight: 770731119
+  Bucket 20 total weight: 761265331
+  Bucket 21 total weight: 754879742
+  Bucket 22 total weight: 749934279
+  Bucket 23 total weight: 748446610
+  Bucket 24 total weight: 746145273
+  Bucket 25 total weight: 740445585
+  Bucket 26 total weight: 733539177
+  Bucket 27 total weight: 728159586
+  Bucket 28 total weight: 723135304
+  Bucket 29 total weight: 720543181
+  Bucket 30 total weight: 719873798
+  Bucket 31 total weight: 719843126
+  Bucket 32 total weight: 717243395
+  Bucket 33 total weight: 712789337
+  Bucket 34 total weight: 710565479
+  Bucket 35 total weight: 702761239
+  Bucket 36 total weight: 701795227
+  Bucket 37 total weight: 697332587
+  Bucket 38 total weight: 686515260
+  Bucket 39 total weight: 681733589
+  Bucket 40 total weight: 677638135
+  Bucket 41 total weight: 677603209
+  Bucket 42 total weight: 676974540
+  Bucket 43 total weight: 674801406
+  Bucket 44 total weight: 671032288
+  Bucket 45 total weight: 669825060
+  Bucket 46 total weight: 669352194
+  Bucket 47 total weight: 663275548
+  Bucket 48 total weight: 659536685
+  Bucket 49 total weight: 658533924
+  Bucket 50 total weight: 656137500
+  Bucket 51 total weight: 655356095
+  Bucket 52 total weight: 654725271
+  Bucket 53 total weight: 653692153
+  Bucket 54 total weight: 652302724
+  Bucket 55 total weight: 649729165
+  Bucket 56 total weight: 645803706
+  Bucket 57 total weight: 645252587
+  Bucket 58 total weight: 639021745
+  Bucket 59 total weight: 636668363
+  Bucket 60 total weight: 636113944
+  Bucket 61 total weight: 634007771
+  Bucket 62 total weight: 631859309
+  Bucket 63 total weight: 628903263
+  Bucket 64 total weight: 616050964
+  Bucket 65 total weight: 610091950
+  Bucket 66 total weight: 604496510
+  Bucket 67 total weight: 603624715
+  Bucket 68 total weight: 599818012
+  Bucket 69 total weight: 599368277
+  Bucket 70 total weight: 599269098
+  Bucket 71 total weight: 598946909
+  Bucket 72 total weight: 597607953
+  Bucket 73 total weight: 597548598
+  Bucket 74 total weight: 595744447
+  Bucket 75 total weight: 591733973
+  Bucket 76 total weight: 590827051
+  Bucket 77 total weight: 587805611
+  Bucket 78 total weight: 584384005
+  Bucket 79 total weight: 582757621
+  Bucket 80 total weight: 579696806
+  Bucket 81 total weight: 576307248
+  Bucket 82 total weight: 572801604
+  Bucket 83 total weight: 566319603
+  Bucket 84 total weight: 561622994
+  Bucket 85 total weight: 561584553
+  Bucket 86 total weight: 561307315
+  Bucket 87 total weight: 554805720
+  Bucket 88 total weight: 549532458
+  Bucket 89 total weight: 549459356
+  Bucket 90 total weight: 549000832
+  Bucket 91 total weight: 546938496
+  Bucket 92 total weight: 544791804
+  Bucket 93 total weight: 543928028
+  Bucket 94 total weight: 542896834
+  Bucket 95 total weight: 516000613
+  Bucket 96 total weight: 512292212
+  Bucket 97 total weight: 502603796
+  Bucket 98 total weight: 492164899
+  Bucket 99 total weight: 485065506
+  Bucket 100 total weight: 484645628
+  Bucket 101 total weight: 471986087
+  Bucket 102 total weight: 470910640
+  Bucket 103 total weight: 459818338
+  Bucket 104 total weight: 459199321
+  Bucket 105 total weight: 454791330
+  Bucket 106 total weight: 445200549
+  Bucket 107 total weight: 443467585
+  Bucket 108 total weight: 439966839
+  Bucket 109 total weight: 439384686
+  Bucket 110 total weight: 436794186
+  Bucket 111 total weight: 433619131
+  Bucket 112 total weight: 432574703
+  Bucket 113 total weight: 431041944
+  Bucket 114 total weight: 419219823
+  Bucket 115 total weight: 410786156
+  Bucket 116 total weight: 401746489
+  Bucket 117 total weight: 392875841
+  Bucket 118 total weight: 380064767
+  Bucket 119 total weight: 379506774
+  Bucket 120 total weight: 374213662
+  Bucket 121 total weight: 368773294
+  Bucket 122 total weight: 342195105
+  Bucket 123 total weight: 330890533
+  Bucket 124 total weight: 325784144
+  Bucket 125 total weight: 304822948
+  Bucket 126 total weight: 281303796
+  Bucket 127 total weight: 200938027
+KNAPSACK efficiency: 0.6157819976
+DM: SFCProcessorMapDoIt called...
+  (nprocs, nteams, nworkers) = (128, 128, 1)
+  Bucket 0 contains 702761239
+  Bucket 1 contains 628903263
+  Bucket 2 contains 436794186
+  Bucket 3 contains 631859309
+  Bucket 4 contains 740445585
+  Bucket 5 contains 597607953
+  Bucket 6 contains 549459356
+  Bucket 7 contains 561622994
+  Bucket 8 contains 746145273
+  Bucket 9 contains 663275548
+  Bucket 10 contains 893032740
+  Bucket 11 contains 604496510
+  Bucket 12 contains 681733589
+  Bucket 13 contains 812954473
+  Bucket 14 contains 431041944
+  Bucket 15 contains 816442136
+  Bucket 16 contains 645252587
+  Bucket 17 contains 645803706
+  Bucket 18 contains 432574703
+  Bucket 19 contains 720543181
+  Bucket 20 contains 701795227
+  Bucket 21 contains 542896834
+  Bucket 22 contains 775526522
+  Bucket 23 contains 572801604
+  Bucket 24 contains 784504447
+  Bucket 25 contains 658533924
+  Bucket 26 contains 599269098
+  Bucket 27 contains 733539177
+  Bucket 28 contains 656137500
+  Bucket 29 contains 492164899
+  Bucket 30 contains 584384005
+  Bucket 31 contains 549532458
+  Bucket 32 contains 671032288
+  Bucket 33 contains 754879742
+  Bucket 34 contains 470910640
+  Bucket 35 contains 749934279
+  Bucket 36 contains 410786156
+  Bucket 37 contains 595744447
+  Bucket 38 contains 512292212
+  Bucket 39 contains 392875841
+  Bucket 40 contains 786574776
+  Bucket 41 contains 712789337
+  Bucket 42 contains 304822948
+  Bucket 43 contains 471986087
+  Bucket 44 contains 439384686
+  Bucket 45 contains 697332587
+  Bucket 46 contains 582757621
+  Bucket 47 contains 639021745
+  Bucket 48 contains 433619131
+  Bucket 49 contains 485065506
+  Bucket 50 contains 719843126
+  Bucket 51 contains 443467585
+  Bucket 52 contains 655356095
+  Bucket 53 contains 598946909
+  Bucket 54 contains 907677837
+  Bucket 55 contains 419219823
+  Bucket 56 contains 659536685
+  Bucket 57 contains 459199321
+  Bucket 58 contains 579696806
+  Bucket 59 contains 591733973
+  Bucket 60 contains 445200549
+  Bucket 61 contains 599818012
+  Bucket 62 contains 576307248
+  Bucket 63 contains 1000000001
+  Bucket 64 contains 546938496
+  Bucket 65 contains 597548598
+  Bucket 66 contains 636668363
+  Bucket 67 contains 719873798
+  Bucket 68 contains 587805611
+  Bucket 69 contains 717243395
+  Bucket 70 contains 834674619
+  Bucket 71 contains 775563144
+  Bucket 72 contains 610091950
+  Bucket 73 contains 723135304
+  Bucket 74 contains 544791804
+  Bucket 75 contains 502603796
+  Bucket 76 contains 677638135
+  Bucket 77 contains 728159586
+  Bucket 78 contains 325784144
+  Bucket 79 contains 454791330
+  Bucket 80 contains 889359461
+  Bucket 81 contains 439966839
+  Bucket 82 contains 368773294
+  Bucket 83 contains 830212529
+  Bucket 84 contains 599368277
+  Bucket 85 contains 566319603
+  Bucket 86 contains 857434500
+  Bucket 87 contains 380064767
+  Bucket 88 contains 616050964
+  Bucket 89 contains 677603209
+  Bucket 90 contains 652302724
+  Bucket 91 contains 281303796
+  Bucket 92 contains 770731119
+  Bucket 93 contains 575151689
+  Bucket 94 contains 561584553
+  Bucket 95 contains 761265331
+  Bucket 96 contains 856511686
+  Bucket 97 contains 549000832
+  Bucket 98 contains 330890533
+  Bucket 99 contains 590827051
+  Bucket 100 contains 516000613
+  Bucket 101 contains 459818338
+  Bucket 102 contains 554805720
+  Bucket 103 contains 649729165
+  Bucket 104 contains 676974540
+  Bucket 105 contains 748446610
+  Bucket 106 contains 634007771
+  Bucket 107 contains 543928028
+  Bucket 108 contains 603624715
+  Bucket 109 contains 636113944
+  Bucket 110 contains 342195105
+  Bucket 111 contains 674801406
+  Bucket 112 contains 886550627
+  Bucket 113 contains 653692153
+  Bucket 114 contains 868587039
+  Bucket 115 contains 561307315
+  Bucket 116 contains 401746489
+  Bucket 117 contains 896988607
+  Bucket 118 contains 669352194
+  Bucket 119 contains 654725271
+  Bucket 120 contains 484645628
+  Bucket 121 contains 910966036
+  Bucket 122 contains 379506774
+  Bucket 123 contains 844991086
+  Bucket 124 contains 686515260
+  Bucket 125 contains 710565479
+  Bucket 126 contains 669825060
+  Bucket 127 contains 0
+SFC efficiency: 0.6157819976
+  Bucket 57 contains 1000000001
+  Bucket 25 contains 988620288
+  Bucket 37 contains 964359633
+  Bucket 105 contains 958907005
+  Bucket 61 contains 956578905
+  Bucket 85 contains 956552209
+  Bucket 79 contains 946384370
+  Bucket 112 contains 945819820
+  Bucket 52 contains 931185408
+  Bucket 24 contains 928533091
+  Bucket 11 contains 923078368
+  Bucket 98 contains 910966036
+  Bucket 13 contains 907677837
+  Bucket 9 contains 904529771
+  Bucket 72 contains 896988607
+  Bucket 29 contains 893032740
+  Bucket 60 contains 889359461
+  Bucket 82 contains 886550627
+  Bucket 83 contains 868587039
+  Bucket 111 contains 864152402
+  Bucket 64 contains 857434500
+  Bucket 80 contains 856511686
+  Bucket 101 contains 844991086
+  Bucket 62 contains 834674619
+  Bucket 76 contains 830212529
+  Bucket 48 contains 816442136
+  Bucket 47 contains 812954473
+  Bucket 36 contains 786574776
+  Bucket 30 contains 784504447
+  Bucket 78 contains 775563144
+  Bucket 7 contains 775526522
+  Bucket 93 contains 770731119
+  Bucket 65 contains 761265331
+  Bucket 22 contains 754879742
+  Bucket 23 contains 749934279
+  Bucket 96 contains 748446610
+  Bucket 28 contains 746145273
+  Bucket 4 contains 740445585
+  Bucket 46 contains 733539177
+  Bucket 106 contains 728159586
+  Bucket 103 contains 723135304
+  Bucket 17 contains 720543181
+  Bucket 74 contains 719873798
+  Bucket 10 contains 719843126
+  Bucket 77 contains 717243395
+  Bucket 51 contains 712789337
+  Bucket 102 contains 710565479
+  Bucket 0 contains 702761239
+  Bucket 6 contains 701795227
+  Bucket 54 contains 697332587
+  Bucket 113 contains 686515260
+  Bucket 32 contains 681733589
+  Bucket 91 contains 677638135
+  Bucket 109 contains 676974540
+  Bucket 67 contains 674801406
+  Bucket 8 contains 671032288
+  Bucket 114 contains 669825060
+  Bucket 86 contains 669352194
+  Bucket 43 contains 663275548
+  Bucket 45 contains 658533924
+  Bucket 34 contains 656137500
+  Bucket 107 contains 655729357
+  Bucket 12 contains 655356095
+  Bucket 97 contains 654725271
+  Bucket 68 contains 653692153
+  Bucket 90 contains 652302724
+  Bucket 95 contains 649729165
+  Bucket 16 contains 645803706
+  Bucket 2 contains 645252587
+  Bucket 55 contains 639021745
+  Bucket 59 contains 636668363
+  Bucket 100 contains 636113944
+  Bucket 110 contains 634007771
+  Bucket 15 contains 631859309
+  Bucket 14 contains 628903263
+  Bucket 89 contains 616050964
+  Bucket 87 contains 610091950
+  Bucket 44 contains 604496510
+  Bucket 56 contains 599818012
+  Bucket 63 contains 599368277
+  Bucket 31 contains 599269098
+  Bucket 26 contains 598946909
+  Bucket 18 contains 597607953
+  Bucket 73 contains 597548598
+  Bucket 53 contains 591733973
+  Bucket 69 contains 590827051
+  Bucket 35 contains 584384005
+  Bucket 40 contains 582757621
+  Bucket 38 contains 579696806
+  Bucket 42 contains 576307248
+  Bucket 21 contains 572801604
+  Bucket 19 contains 561622994
+  Bucket 108 contains 561584553
+  Bucket 71 contains 561307315
+  Bucket 50 contains 549532458
+  Bucket 5 contains 549459356
+  Bucket 66 contains 549000832
+  Bucket 58 contains 546938496
+  Bucket 88 contains 544791804
+  Bucket 99 contains 543928028
+  Bucket 20 contains 542896834
+  Bucket 84 contains 516000613
+  Bucket 104 contains 502603796
+  Bucket 49 contains 492164899
+  Bucket 70 contains 459818338
+  Bucket 41 contains 445200549
+  Bucket 75 contains 439966839
+  Bucket 39 contains 439384686
+  Bucket 1 contains 436794186
+  Bucket 3 contains 432574703
+  Bucket 33 contains 431041944
+  Bucket 27 contains 419219823
+  Bucket 94 contains 374213662
+  Bucket 81 contains 330890533
+  Bucket 92 contains 325784144
+  Bucket 115 contains 0
+  Bucket 116 contains 0
+  Bucket 117 contains 0
+  Bucket 118 contains 0
+  Bucket 119 contains 0
+  Bucket 120 contains 0
+  Bucket 121 contains 0
+  Bucket 122 contains 0
+  Bucket 123 contains 0
+  Bucket 124 contains 0
+  Bucket 125 contains 0
+  Bucket 126 contains 0
+  Bucket 127 contains 0
+SFC+painterPartition efficiency: 0.6157819976
+
+
+TinyProfiler total time across processes [min...avg...max]: 0.1995 ... 0.1995 ... 0.1995
+
+----------------------------------------------------------------------
+Name                   NCalls  Excl. Min  Excl. Avg  Excl. Max   Max %
+----------------------------------------------------------------------
+main                        1    0.06335    0.06335    0.06335  31.76%
+KnapSackDoIt()              1    0.06055    0.06055    0.06055  30.36%
+painterPartition()          1    0.04043    0.04043    0.04043  20.27%
+SFCProcessorMapDoIt()       1    0.03507    0.03507    0.03507  17.58%
+knapsack()                  1  4.129e-05  4.129e-05  4.129e-05   0.02%
+Distribute()                1  8.055e-06  8.055e-06  8.055e-06   0.00%
+----------------------------------------------------------------------
+
+----------------------------------------------------------------------
+Name                   NCalls  Incl. Min  Incl. Avg  Incl. Max   Max %
+----------------------------------------------------------------------
+main                        1     0.1995     0.1995     0.1995  99.99%
+KnapSackDoIt()              1     0.0606     0.0606     0.0606  30.38%
+painterPartition()          1    0.04043    0.04043    0.04043  20.27%
+SFCProcessorMapDoIt()       1    0.03508    0.03508    0.03508  17.59%
+knapsack()                  1  4.129e-05  4.129e-05  4.129e-05   0.02%
+Distribute()                1  8.055e-06  8.055e-06  8.055e-06   0.00%
+----------------------------------------------------------------------
+
+Pinned Memory Usage:
+---------------------------------------------------------------
+Name                            Nalloc  Nfree  AvgMem    MaxMem
+---------------------------------------------------------------
+The_Pinned_Arena::Initialize()       1      1  38 KiB  8192 KiB
+---------------------------------------------------------------
+
+AMReX (24.05-32-g28b010126a1b) finalized
