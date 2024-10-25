@@ -121,8 +121,10 @@ void main_main ()
     //std::vector<Long> guess(nitems);
 
     Real mean = 100000;  /// We need to have read from file
-   // Real stdev = 4523;
-    Real stdev = 25231; //for worst case 
+   // Real stdev = 4523; // for avg case
+    //Real stdev = 25231; //for the worst case 
+    Real stdev = 250; //for the best case 
+    
     for (int i=0; i<nitems; ++i) {
         wgts[i] = amrex::RandomNormal(mean, stdev);
         amrex::Print()<<wgts[i]<<" , ";
