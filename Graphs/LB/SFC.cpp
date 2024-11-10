@@ -100,6 +100,7 @@ namespace {
     }
 }
 
+
 void
 Distribute (const std::vector<SFCToken>&     tokens,
             const std::vector<amrex::Long>&  wgts,
@@ -230,10 +231,26 @@ SFCProcessorMapDoIt (const amrex::BoxArray&          boxes,
         const amrex::Box& bx = boxes[i];
         tokens.push_back(makeSFCToken(i, bx.smallEnd()));
     }
+    // for (int i = 0; i < N; ++i)
+    // {
+    //     amrex::Print() << tokens[i].m_box << " \n";
+        
+    //     //amrex::Print() << tokens[i].m_morton[0] << " " << tokens[i].m_morton[1] << " " << tokens[i].m_morton[2] << " \n";
+    // }
     //
     // Put'm in Morton space filling curve order.
     //
     std::sort(tokens.begin(), tokens.end(), SFCToken::Compare());
+    
+    // amrex::Print()<<"After sorting\n\n";
+    // for (int i = 0; i < N; ++i)
+    // {
+    //     amrex::Print() << tokens[i].m_box << " \n";
+        
+    //     //amrex::Print() << tokens[i].m_morton[0] << " " << tokens[i].m_morton[1] << " " << tokens[i].m_morton[2] << " \n";
+    //     //decToBinary(tokens[i].m_morton[0]);
+    //     // amrex::Print()<<" "<<std::bitset<8>(128).to_string()<<"\n";
+    // }
     //
     // Split'm up as equitably as possible per team.
     //
@@ -289,11 +306,11 @@ SFCProcessorMapDoIt (const amrex::BoxArray&          boxes,
 
     if (sort) Sort(LIpairV, true);
 
-    if (flag_verbose_mapper) {
-        for (const auto &p : LIpairV) {
-            amrex::Print() << "  Bucket " << p.second << " contains " << p.first << std::endl;
-        }
-    }
+    // if (flag_verbose_mapper) {
+    //     for (const auto &p : LIpairV) {
+    //         amrex::Print() << "  Bucket " << p.second << " contains " << p.first << std::endl;
+    //     }
+    // }
 
     // LIpairV has a size of nteams and LIpairV[] is pair whose first is weight
     // and second is an index into vec.  LIpairV is sorted by weight such that
@@ -445,7 +462,9 @@ SFCProcessorMapDoIt (const amrex::BoxArray&          boxes,
     //         if (sort) Sort(LIpairV, true);
 
     //     #endif
-
+    // for (int j = 0; j < N; ++j) {
+    //             amrex::Print()<<result[j]<<" \n";
+    //         }
     return result;
 }
 

@@ -473,15 +473,15 @@ KnapSackDoIt (const std::vector<amrex::Long>& wgts,// length of vector is the nu
 
     knapsack(wgts,nteams,vec,efficiency,do_full_knapsack,nmax);
 
-    if (flag_verbose_mapper) {
-        for (int i = 0, ni = vec.size(); i < ni; ++i) {
-            // amrex::Print() << "  Bucket " << i << " contains boxes:" << std::endl << "    ";
-            for (int j = 0, nj = vec[i].size(); j < nj; ++j) {
-                // amrex::Print() << vec[i][j] << " ";
-            }
-            amrex::Print() << std::endl;
-        }
-    }
+    // if (flag_verbose_mapper) {
+    //     for (int i = 0, ni = vec.size(); i < ni; ++i) {
+    //         // amrex::Print() << "  Bucket " << i << " contains boxes:" << std::endl << "    ";
+    //         for (int j = 0, nj = vec[i].size(); j < nj; ++j) {
+    //             // amrex::Print() << vec[i][j] << " ";
+    //         }
+    //         //amrex::Print() << std::endl;
+    //     }
+    // }
 
     BL_ASSERT(static_cast<int>(vec.size()) == nteams);
 
@@ -503,11 +503,11 @@ KnapSackDoIt (const std::vector<amrex::Long>& wgts,// length of vector is the nu
 
     if (sort) {Sort(LIpairV, true);}
 
-    if (flag_verbose_mapper) {
-        for (const auto &p : LIpairV) {
-            amrex::Print() << "  Bucket " << p.second << " total weight: " << p.first << std::endl;
-        }
-    }
+    // if (flag_verbose_mapper) {
+    //     for (const auto &p : LIpairV) {
+    //         amrex::Print() << "  Bucket " << p.second << " total weight: " << p.first << std::endl;
+    //     }
+    // }
 
     amrex::Vector<int> ord;// ordering of the buckets 
     amrex::Vector<amrex::Vector<int> > wrkerord; //mapping of boxes to boxes for 

@@ -121,24 +121,24 @@ void main_main ()
     //std::vector<Long> guess(nitems);
 
     Real mean = 100000;  /// We need to have read from file
-   // Real stdev = 4523; // for avg case
-    //Real stdev = 25231; //for the worst case 
-    Real stdev = 250; //for the best case 
+    //Real stdev = 4523; // for avg case
+    Real stdev = 25231; //for the worst case 
+    //Real stdev = 250; //for the best case 
     
     for (int i=0; i<nitems; ++i) {
         wgts[i] = amrex::RandomNormal(mean, stdev);
-        amrex::Print()<<wgts[i]<<" , ";
+       // amrex::Print()<<wgts[i]<<" , ";
        // guess[i] = amrex::RandomNormal(mean, stdev);
     }
-    amrex::Print()<<std::endl;
+   // amrex::Print()<<std::endl;
     // Scale weights and convert to Long for algorithms.
     std::vector<Long> scaled_wgts = scale_wgts(wgts);
-    amrex::Print()<<" Scaled Weights: ";
-    for (int i=0; i<nitems; ++i) {
+    // amrex::Print()<<" Scaled Weights: ";
+    // for (int i=0; i<nitems; ++i) {
         
-        amrex::Print()<<scaled_wgts[i]<<" , ";
+    //     amrex::Print()<<scaled_wgts[i]<<" , ";
        
-    }
+    // }
     //generate array of guesses with normal distribution
     std::default_random_engine generator;
     std::normal_distribution<double> distribution(mean,stdev);
@@ -154,11 +154,16 @@ void main_main ()
     // amrex::Print()<<std::endl;
     // SFC parameter -- default = 0
     int node_size = 0;
-
+    double start = amrex::second();
     std::vector<int> k_dmap = KnapSackDoIt(scaled_wgts, nbins, k_eff, true, nmax, true, false, bytes);
+    amrex::Print()<<"Knapsack time: " <<amrex::second()-start<<"\n";
+    start = amrex::second();
     std::vector<int> s_dmap = SFCProcessorMapDoIt(ba, scaled_wgts, nbins, &s_eff, node_size, true, false, bytes);
-   // std::vector<int> bruteForce_dmap = BruteForceDoIt(guess, nbins, k_eff, true, nmax, true, false, bytes);
-    std::vector< std::vector<int> > vec=painterPartition(scaled_wgts,nbins);
+    // std::vector<int> bruteForce_dmap = BruteForceDoIt(guess, nbins, k_eff, true, nmax, true, false, bytes);
+    amrex::Print()<<"SFC time: " <<amrex::second()-start<<"\n";
+    start=amrex::second();
+    std::vector<int>  result=painterPartition(ba,scaled_wgts,nbins);
+    amrex::Print()<<"painter time: " <<amrex::second()-start<<"\n";
     
     // BruteForceDoIt(nbins,nitems,mean,stdev,wgts.data());
     
