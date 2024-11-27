@@ -213,7 +213,7 @@ long minWeight(vector<long> wgts, int n, int k)
 	long maxVal=minWeight(sorted_wgts,n,k);
 	//cout << maxVal << endl; 
 	vector< vector<int> > vec(k);
-    vector<int> result(wgts.size());
+    vector<int> sorted_result(wgts.size());
 	int index;
 	
     
@@ -234,7 +234,7 @@ long minWeight(vector<long> wgts, int n, int k)
 				index=a;
 				vec[p].push_back(index);
                 //cout<<"p="<<p<<endl;
-                result[index]=p;
+                sorted_result[index]=p;
             }
             j++;
 			i=j;
@@ -244,15 +244,30 @@ long minWeight(vector<long> wgts, int n, int k)
 				index=a;
 				vec[p].push_back(index);
                // cout<<"p="<<p<<endl;
-                result[index]=p;
+                sorted_result[index]=p;
 			}
 			i=j;
 		}
 
 	}
-
+   
+   vector<int> result(wgts.size());
+   for (int i = 0; i < N; ++i)
+		{
+			// amrex::Print() << tokens[i].m_box << " \n";
+            //sorted_wgts.push_back(wgts[tokens[i].m_box]);
+            result[tokens[i].m_box] = sorted_result[i];
+            // amrex::Print() << tokens[i].m_morton[0] << " " << tokens[i].m_morton[1] << " " << tokens[i].m_morton[2] << " \n";
+        }
+    // amrex::Print()<<"----------------result\n";
     // for (int j = 0; j < N; ++j) {
-    //     amrex::Print()<<result[j]<<" \n";
+    //     amrex::Print()<<wgts[j]<<" , "<<result[j]<<" ";
+    
+    // }
+    // amrex::Print()<<"----------------\n";
+    // for (int j = 0; j < N; ++j) {
+       
+    //     amrex::Print()<<sorted_wgts[j]<<" , "<<sorted_result[j]<<" ";
     // }
 	// for(int i=0;i<k;i++){
     //     for(int j=0;j<vec[i].size();j++){
@@ -303,6 +318,6 @@ long minWeight(vector<long> wgts, int n, int k)
             amrex::Print() << "SFC+painterPartition efficiency: " << efficiency << '\n';
         }
     }
- 
+     
 	return result;
 } 
